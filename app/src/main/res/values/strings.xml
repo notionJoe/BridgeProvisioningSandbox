@@ -1,0 +1,807 @@
+<resources>
+    <string name="app_name">Notion</string>
+
+    <!-- ProjectNumber for the 'notion-android' ProjectID  -->
+    <string name="project_number">456108706179</string>
+
+    <!-- US Support Website -->
+    <string name="support.url">http://support.getnotion.com/hc/en-us</string>
+
+    <!-- What is this??? -->
+    <string name="introduction">Welcome! </string>
+    <string name="clear_screen">Clear Screen</string>
+    <string name="first_launch">First Launch</string>
+    <string name="num_of_missed_messages">MissedMessageCount</string>
+    <string name="lines_of_message_count">LinesOfMessageCount</string>
+    <string name="preferences">PreferencesFile</string>
+
+    <!-- Custom Fonts-->
+    <string name="font.black">fonts/ProximaNova-Black.otf</string>
+    <string name="font.bold">fonts/ProximaNova-Bold.otf</string>
+    <string name="font.bolditalic">fonts/ProximaNova-BoldIt.otf</string>
+    <string name="font.extrabold">fonts/ProximaNova-Extrabold.otf</string>
+    <string name="font.light">fonts/ProximaNova-Light.otf</string>
+    <string name="font.lightitalic">fonts/ProximaNova-LightItalic.otf</string>
+    <string name="font.regtalic">fonts/ProximaNova-RegItalic.otf</string>
+    <string name="font.regular">fonts/ProximaNova-Regular.otf</string>
+    <string name="font.regularitalic">fonts/ProximaNova-RegularItalic.otf</string>
+    <string name="font.semibold">fonts/ProximaNova-Semibold.otf</string>
+    <string name="font.semibolditalic">fonts/ProximaNova-SemiboldItalic.otf</string>
+
+    <!-- Globals -->
+    <string name="global.cancel">Cancel</string>
+    <string name="global.confirm">Okay</string>
+    <string name="global.delete">Delete</string>
+    <string name="global.save">Save</string>
+    <string name="global.next">Next {fa-long-arrow-right}</string>
+    <string name="global.today">Today</string>
+    <string name="global.yesterday">Yesterday</string>
+    <string name="global.task">task</string>
+    <string name="global.tasks">tasks</string>
+    <string name="global.noTasks">no tasks</string>
+    <string name="sensor">Sensor</string>
+    <string name="sensors">Sensors</string>
+    <string name="global.edit">Edit</string>
+    <string name="global.cleaningUp">Cleaning up…</string>
+
+    <!-- Navigation -->
+    <string name="nav_back">{fa-caret-left} BACK</string>
+    <string name="nav_task_details">{fa-caret-left} TASK DETAILS</string>
+    <string name="nav_home">{fa-caret-left} HOME</string>
+    <string name="nav_sensors">{fa-caret-left} SENSORS</string>
+    <string name="nav_locations">{fa-caret-left} LOCATIONS</string>
+    <string name="nav_account">{fa-caret-left} ACCOUNT</string>
+    <string name="nav_systems">{fa-caret-left} SYSTEMS</string>
+    <string name="nav_devices">{fa-caret-left} DEVICES</string>
+
+    <!-- Welcome Screen strings -->
+    <string name="welcome.notionLogo">Notion Logo</string>
+    <string name="welcome.mainScreenBackground">Notion sensor and succulent</string>
+    <string name="welcome.welcomeText">Home \nAwareness, \nSimplified</string>
+    <string name="welcome.createAccount">Create new account</string>
+    <string name="welcome.continueSetup">Continue setup</string>
+    <string name="welcome.login">Login</string>
+
+    <!-- Login strings -->
+    <string name="title_activity_login">Login</string>
+    <string name="setup.account.login.backButton">{fa-caret-left} Welcome</string>
+    <string name="setup.account.login.forgotPasswordDescription">Forgot your password?</string>
+    <string name="setup.account.login.forgotPasswordLink">Reset now.</string>
+    <string name="setup.account.login.loginButton">Log in {fa-long-arrow-right}</string>
+    <string name="setup.account.login.loginButtonActive">Logging in…</string>
+    <string name="setup.account.login.NetworkError">Network error…</string>
+    <string name="setup.account.general.login.error">Email or password incorrect…</string>
+
+    <!-- Reset Password -->
+    <string name="setup.account.resetPassword.backButton">{fa-caret-left} Login</string>
+    <string name="setup.account.resetPassword.description">Please enter the email associated with your Notion account? We\'ll send instructions on how to reset your password to this address.</string>
+    <string name="setup.account.resetPassword.resetPasswordButton">Reset password</string>
+
+    <!-- Initial Setup strings -->
+    <string name="title_activity_initial_setup">Setup</string>
+    <string name="setup.backButton">{fa-caret-left} Welcome</string>
+
+    <!-- Account strings -->
+    <string name="setup.account.title">Account</string>
+    <string name="setup.account.description">We\'ll start by creating an account for your system.</string>
+    <string name="setup.account.policyText">By creating an account, you agree with our <a href="http://www.getnotion.com/terms">Terms and Conditions</a> and <a href="http://www.getnotion.com/privacy">Privacy Policy</a>.</string>
+    <string name="setup.account.createButton">Create now {fa-long-arrow-right}</string>
+    <string name="setup.account.createButtonCreating">Creating Account…</string>
+    <string name="setup.account.current">Already have an account?</string>
+    <string name="setup.account.login">Login now.</string>
+    <string name="setup.account.complete.title">Hi, %1$s.</string>
+    <string name="setup.account.complete.description">Successfully created account.</string>
+    <string name="setup.account.complete.details">Not you?</string>
+    <string name="setup.account.complete.logout">Log out now.</string>
+
+    <!-- System strings -->
+    <string name="setup.system.title">System</string>
+    <string name="setup.system.description">Next, find a centrally located outlet in your home, and plug in your bridge.</string>
+    <string name="setup.system.addSystemButton">Create system {fa-long-arrow-right}</string>
+    <string name="setup.system.addSystemButton.connectingToBridge">Connecting to Bridge…</string>
+    <string name="setup.system.addSystemButton.provisioningBridge">Configuring Bridge…</string>
+    <string name="setup.system.addSystemButton.addingSystem">Creating System…</string>
+    <string name="setup.system.addSystemButton.addingBridge">Adding Bridge…</string>
+    <string name="setup.system.complete.title">%1$s</string>
+    <string name="setup.system.complete.description">Successfully created system.</string>
+    <string name="setup.system.complete.details">Edit</string>
+
+    <!-- Sensor strings -->
+    <string name="setup.sensor.title">Sensors</string>
+    <string name="setup.sensor.description">Finally, you can install and use your sensors!</string>
+    <string name="setup.sensor.description.active">Use your phone\'s camera to add sensors to your Notion System.</string>
+    <string name="setup.sensor.addSensorButton">Add sensors {fa-long-arrow-right}</string>
+    <string name="setup.sensor.addSensorButton.multiple">Add first sensor \u2192</string>
+
+    <!-- Account Setup Strings -->
+    <string name="title_activity_account_setup">Create Account</string>
+
+    <!-- Back Button/Warning -->
+    <string name="setup.account.backButton">{fa-caret-left} Account</string>
+    <string name="setup.account.back.title">Are you sure?</string>
+    <string name="setup.account.back.details">If you go back you\'ll all of the information you\'ve set up so far.</string>
+
+    <!-- Name Field -->
+    <string name="setup.account.name.label">Name</string>
+    <string name="setup.account.name.description">First off, we\'d like to get your full name:</string>
+    <string name="setup.account.name.firstName.placeholder">First name</string>
+    <string name="setup.account.name.firstName.error">Oops, we need your first name.</string>
+    <string name="setup.account.name.lastName.placeholder">Last</string>
+    <string name="setup.account.name.lastName.error">Oops, we need your last name.</string>
+    <string name="setup.account.name.change">Edit your name</string>
+
+    <!-- Email Field -->
+    <string name="setup.account.email.label">Email address</string>
+    <string name="setup.account.email.description">What\'s your email address?</string>
+    <string name="setup.account.email.placeholder">Email address</string>
+    <string name="setup.account.email.details">We\'ll send emails about alerts from your home, tips on how to get the most out of your system, and product offers.</string>
+    <string name="setup.account.email.error">Your email doesn\'t seem to be valid…</string>
+    <string name="setup.account.email.change">Edit your email address</string>
+
+    <!-- Phone Field -->
+    <string name="setup.account.phone.label">Phone number</string>
+    <string name="setup.account.phone.description">What\'s your phone number?</string>
+    <string name="setup.account.phone.placeholder">Phone number</string>
+    <string name="setup.account.phone.error">The number doesn\'t seem to be valid…</string>
+
+    <!-- Password -->
+    <string name="setup.account.password.label">Password</string>
+    <string name="setup.account.password.description">And, please create a password that\'s at least eight characters.</string>
+    <string name="setup.account.password.placeholder">Password</string>
+    <string name="setup.account.password.error">Oops, please make sure to use 8 characters.</string>
+    <string name="setup.account.password.change">Edit your password</string>
+
+    <!-- Create Account Button -->
+    <string name="setup.account.createAccountButton">Create account {fa-long-arrow-right}</string>
+
+    <!-- System Setup Strings -->
+    <string name="title_activity_system_setup">SystemSetupActivity</string>
+
+    <!-- Back Button/Warning -->
+    <string name="setup.system.backButton">{fa-caret-left} System</string>
+
+    <!-- Plugin Bridge Instructions -->
+    <string name="setup.system.pluginBridge.pluginBridgeImage">An eloquent hand plugging in a Notion Bridge vertically into an outlet on a tile wall with a seemingly nice wooden countertop below</string>
+    <string name="setup.system.pluginBridge.instructions"><![CDATA[Go ahead and plug in your bridge. <b>You\'ll see the light on the top flash blue when it\'s ready to be installed.</b>]]></string>
+    <string name="setup.system.pluginBridge.continueButton">Okay, plugged in!</string>
+
+    <!-- System Name Field -->
+    <string name="setup.system.name">My Home</string>
+    <string name="setup.system.name.label">Name</string>
+    <string name="setup.system.name.description">What would you like to name your new system?</string>
+    <string name="setup.system.name.placeholder">Name your system</string>
+    <string name="setup.system.name.error">Oops, your system must at least be 4 characters.</string>
+    <string name="setup.system.name.edit.header">Name</string>
+    <string name="setup.system.name.edit.rename">What would you like to call this system?</string>
+    <string name="setup.system.name.edit.rename.error">Please enter a valid system name!</string>
+
+    <!-- Permissions Field -->
+    <string name="setup.system.permissions.label">Permissions</string>
+    <string name="setup.system.permissions.description">Enabled</string>
+    <string name="setup.system.permissions.location.label">Location Permissions</string>
+    <string name="setup.system.permissions.location.description">Location permissions are required to connect and configure your Bridge. They\'re also used for setting the correct timezone for your System. \n(You can disable them upon completing setup)</string>
+    <string name="setup.system.permissions.writeSettings.label">Write Settings Permissions</string>
+    <string name="setup.system.permissions.writeSettings.description">Write Settings permissions are also required to configure your Bridge on Android v6.0.0 due to a system bug fixed in 6.0.1. A new screen will be launched to enable this permission. \n(You can disable this upon completing setup)</string>
+
+    <!-- Bridge Field -->
+    <string name="setup.system.bridge.name.label">Bridge</string>
+    <string name="setup.system.bridge.bridgeFound">Bridge found!</string>
+    <string name="setup.system.bridge.error.bridgeNotFound"><![CDATA[It doesn\'t look like your bridge is connected or in range. <b>Please plug in near your wifi router and try again!</b>]]></string>
+    <!-- Bridge Field: BridgeFound-->
+    <string name="setup.system.bridge.descriptionOld">The following Bridge was self selected because it\'s the only one in range.</string>
+    <string name="setup.system.bridge.description.singleBridge">We found your Bridge! Now select your Wi-Fi network.</string>
+    <string name="setup.system.bridge.description.multipleBridges">We found multiple bridges. Tap below to select a different one, and then select your Wi-Fi network.</string>
+    <string name="setup.system.bridge.bridgeName">Bridge-E7EC05</string>
+    <string name="setup.system.bridge.otherBridge">Other bridge…</string>
+    <string name="setup.system.bridge.additionalBridge">+ Add new bridge</string>
+    <!-- Network Field -->
+    <string name="setup.system.network.label">Wi-Fi Network</string>
+    <string name="setup.system.network.description">Network</string>
+    <string name="setup.system.network.network.placeholder"><![CDATA[<Placeholder SSID>]]></string>
+    <string name="setup.system.network.password.hint">Password</string>
+    <string name="setup.system.network.password.error">Your password cannot be empty for the selected network type.</string>
+    <string name="setup.system.network.selectNetwork">Select a network…</string>
+    <!-- Progress Button -->
+    <string name="setup.system.progressButton.searchButton">{fa-search} Search for Bridge</string>
+    <string name="setup.system.progressButton.searchButtonActive">Searching for Bridge…</string>
+    <string name="setup.system.progressButton.addNetwork">Select network {fa-long-arrow-right}</string>
+    <string name="setup.system.progressButton.createSystem">Create system {fa-long-arrow-right}</string>
+    <string name="setup.system.progressButton.addBridge">Add Bridge {fa-long-arrow-right}</string>
+    <string name="setup.system.progressButton.configureBridge">Configure Bridge {fa-long-arrow-right}</string>
+
+    <!-- System mode -->
+    <string name="system.mode.instructions">Automatic Mode Switching</string>
+    <string name="system.mode.home">At Home</string>
+    <string name="system.mode.away">Away</string>
+
+    <!-- Identify & Connect to Bridge Buttons -->
+    <string name="setup.system.connectBridgeButton">Connect to Bridge {fa-caret-right}</string>
+
+    <!-- Sensor Setup Strings -->
+    <string name="title_activity_sensor_setup">Add Sensor</string>
+    <!-- Back Button/Warning -->
+    <string name="setup.sensor.tapWake.title"><![CDATA[To wake up your sensor,<br> <b>knock twice.</b> ]]></string>
+    <string name="setup.sensor.tapWake.message">The light will flash when it\'s awake.</string>
+    <string name="setup.sensor.tapWake.nextButton">Okay, next!</string>
+    <string name="setup.sensor.tapWake.image.description">A big ole fist knocking on a Sensor.</string>
+    <string name="setup.sensor.scanSensor.description"><![CDATA[<b>Scan the QR code on the back</b> of the sensor you would like to install.]]></string>
+    <string name="setup.sensor.scanSensor.image.description">The hind end of a sensor.</string>
+    <string name="setup.sensor.scanSensor.error"><![CDATA[Oops, you\'ve already added this sensor to the system. <b>Please try a different sensor..</b>]]></string>
+    <string name="setup.sensor.scanSensor.nextButton">{fa-camera} Launch Camera</string>
+    <string name="setup.sensor.scanSensor.launchingCamera">Launching Camera…</string>
+    <string name="setup.sensor.scanSensor.addingSensor">Adding Sensor…</string>
+    <string name="setup.sensor.scanSensor.tapToFocus">Tap to focus</string>
+    <string name="setup.sensor.scanSensor.menu.enterId">Manually Enter ID</string>
+    <string name="setup.sensor.scanSensor.enterIdDialog.title">Enter Sensor ID</string>
+    <string name="setup.sensor.scanSensor.enterIdDialog.message">Sensor ID won\'t scan? Please contact Notion Support for additional methods of determining your Sensor\'s ID and enter it below.</string>
+    <!-- Select Location -->
+    <string name="setup.sensor.selectLocation.description">What room will you be putting your sensor in?</string>
+    <string name="setup.sensor.selectLocation.description.changeLocation">Where would you like to move this sensor?</string>
+    <string name="setup.sensor.selectLocation.locationDetails">This location has %1$d existing %2$s</string>
+    <string name="setup.sensor.selectLocation.locationDetails.currentSensor">Your sensor\'s current location</string>
+    <string name="setup.sensor.selectLocation.selectTaskButton">Select location {fa-long-arrow-right}</string>
+    <string name="location_other_header">What would you like to name the location where you\'re placing your sensor?</string>
+    <string name="location_duplicate_header">You already have a sensor in the %s, what new name would you like to use for this location?</string>
+    <string name="location_duplicate_subheader">Examples: Kitchen cabinet, guest bedroom, …</string>
+    <string name="name_this_location_header">What would you like to name this location?</string>
+    <string name="copy">copy</string>
+    <string name="location_name">Location name</string>
+    <!-- Task Selection  -->
+    <string name="setup.sensor.taskSelection.description"><![CDATA[<b>Select the tasks you\'d like to assign to the %s.</b> Tasks that are in conflict will be shuffled to the bottom of the list.]]></string>
+    <string name="setup.sensor.taskSelection.addTaskButton">Add</string>
+    <string name="setup.sensor.taskSelection.header.available">AVAILABLE</string>
+    <string name="setup.sensor.taskSelection.header.unavailable">UNAVAILABLE</string>
+    <string name="setup.sensor.taskSelection.row.image">Task Item Image</string>
+    <string name="setup.sensor.taskSelection.row.check">Task Item Check</string>
+
+    <!-- Task Install Details-->
+    <!-- Door Confirmation -->
+    <string name="setup.sensor.doorClosedConfirmation.title">Is your door closed?</string>
+    <string name="setup.sensor.doorClosedConfirmation.message">If not, please close your door.</string>
+    <!-- Garage Door Closed Confirmation -->
+    <string name="setup.sensor.garageDoorClosedConfirmation.title">Is your garage door closed?</string>
+    <string name="setup.sensor.garageDoorClosedConfirmation.message">If not, please close your garage door.</string>
+    <!-- Window Closed Confirmation -->
+    <string name="setup.sensor.windowClosedConfirmation.title">Is your window closed?</string>
+    <string name="setup.sensor.windowClosedConfirmation.message">If not, please close your window.</string>
+    <!-- Smoke Alarm Confirmation -->
+    <string name="setup.sensor.alarmConfirmation.title">Install no more than 12 in. away.</string>
+    <string name="setup.sensor.alarmConfirmation.message">This allows the Notion Sensor to tell when a smoke or carbon monoxide alarm is activated.</string>
+    <!-- Orientation-->
+    <string name="setup.sensor.orientation.title.sliding">Does your window slide vertically or horizontally?</string>
+    <string name="setup.sensor.orientation.title.hinged">Does your window open vertically or horizontally?</string>
+    <string name="setup.sensor.orientation.message">This helps us calibrate the sensor.</string>
+    <string name="setup.sensor.orientation.vertical">Vertical</string>
+    <string name="setup.sensor.orientation.vertical.imageDescription">A vertically opening window</string>
+    <string name="setup.sensor.orientation.horizontal">Horizontal</string>
+    <string name="setup.sensor.orientation.horizontal.imageDescription">A horizontally opening window</string>
+    <!-- Type -->
+    <string name="setup.sensor.type.title">Choose the type of window you\'re installing on.</string>
+    <string name="setup.sensor.type.message">This helps us calibrate the sensor.</string>
+    <string name="setup.sensor.type.sliding">Sliding</string>
+    <string name="setup.sensor.type.sliding.imageDescription">A sliding window</string>
+    <string name="setup.sensor.type.hinged">Hinged</string>
+    <string name="setup.sensor.type.hinged.imageDescription">A hinged window</string>
+
+    <!-- Install Instructions-->
+    <string name="setup.sensor.installInstructions.installedButton">Okay, installed {fa-long-arrow-right}</string>
+    <string name="setup.sensor.installInstructions.installingSensor">Installing Sensor…</string>
+    <string name="setup.sensor.installInstructions.calibratingSensor">Calibrating Sensor…</string>
+    <string name="setup.sensor.installInstructions.installImageDescription">Install Image is Pretty</string>
+    <string name="setup.sensor.installInstructions.installText.placeholder">Install Text Placeholder</string>
+    <string name="setup.sensor.installInstructions.installTip.placeholder">Install Tip Placeholder</string>
+    <string name="setup.sensor.installInstructions.moreTips">Need more tips?</string>
+
+    <!-- Install Instructions Per Task -->
+    <string name="setup.sensor.installInstructions.tip">Tip</string>
+    <!-- Door -->
+    <string name="setup.sensor.installInstructions.doorTitle">Attach the sensor on your door.</string>
+    <string name="setup.sensor.installInstructions.doorHeader">Close your door.</string>
+    <string name="setup.sensor.installInstructions.doorMessage">Peel the clear sticker backing off the sensor. Place it on the inside of your door, on the side of the door knob, at the top of the door.</string>
+    <string name="setup.sensor.installInstructions.doorTip"/>
+    <!-- Sliding Door -->
+    <string name="setup.sensor.installInstructions.doorSlidingTitle">Attach the sensor on your sliding door.</string>
+    <string name="setup.sensor.installInstructions.doorSlidingHeader">Close your sliding door.</string>
+    <string name="setup.sensor.installInstructions.doorSlidingMessage">Peel the clear sticker backing off the sensor. Place it on the inside of the door that slides, at the top of the door.</string>
+    <string name="setup.sensor.installInstructions.doorSlidingTip"/>
+    <!-- Garage Door-->
+    <string name="setup.sensor.installInstructions.doorGarageDoorTitle">Attach the sensor to your garage door.</string>
+    <string name="setup.sensor.installInstructions.doorGarageDoorHeader">Close your garage door.</string>
+    <string name="setup.sensor.installInstructions.doorGarageDoorMessage">Peel the clear sticker backing off the sensor. Place it on the inside of the garage door at the top of the door.</string>
+    <string name="setup.sensor.installInstructions.doorGarageDoorTip">Clean the area the sensor will be placed before adhering to the door.</string>
+    <!-- Safe Door-->
+    <string name="setup.sensor.installInstructions.doorSafeTitle">Attach the sensor to your safe door.</string>
+    <string name="setup.sensor.installInstructions.doorSafeHeader">Close your safe door.</string>
+    <string name="setup.sensor.installInstructions.doorSafeMessage">Peel the clear sticker backing off the sensor. Place the sensor on the opposite side of the safe door hinges, at the top of the door.</string>
+    <string name="setup.sensor.installInstructions.doorSafeTip"/>
+    <!-- Window -->
+    <string name="setup.sensor.installInstructions.windowTitle">Attach the sensor to a window.</string>
+    <string name="setup.sensor.installInstructions.windowHeader"/>
+    <string name="setup.sensor.installInstructions.windowMessage">Peel the clear sticker backing off the sensor. Place the sensor on the glass of the window that moves when opened.</string>
+    <string name="setup.sensor.installInstructions.windowTip">Place the sensor near the window\'s handle.</string>
+    <!-- Smoke Alarm -->
+    <string name="setup.sensor.installInstructions.smokeAlarmTitle">Attach within a few inches of your smoke alarm.</string>
+    <string name="setup.sensor.installInstructions.smokeAlarmHeader"/>
+    <string name="setup.sensor.installInstructions.smokeAlarmMessage">Peel the clear sticker backing off the sensor. Place the sensor in a well ventilated area on the wall or ceiling your alarm is on.</string>
+    <string name="setup.sensor.installInstructions.smokeAlarmTip">Sensors may have a tough time sticking to rough or bumpy walls or ceilings.</string>
+    <!-- General Water -->
+    <string name="setup.sensor.installInstructions.generalWaterTitle">Attach the sensor to the floor or wall.</string>
+    <string name="setup.sensor.installInstructions.generalWaterHeader"/>
+    <string name="setup.sensor.installInstructions.generalWaterMessage">Peel the clear sticker backing off the sensor. Place the sensor in an area you\'re concerned water might collect.</string>
+    <string name="setup.sensor.installInstructions.generalWaterTip">Clean the area to remove any dust and dirt before installing.</string>
+    <!-- Temperature -->
+    <string name="setup.sensor.installInstructions.temperatureTitle">Install in a room.</string>
+    <string name="setup.sensor.installInstructions.temperatureHeader"/>
+    <string name="setup.sensor.installInstructions.temperatureMessage">Place the sensor on a dresser, table, bookshelf, or flat surface or adhere to a wall or ceiling of the room you want to monitor.</string>
+    <string name="setup.sensor.installInstructions.temperatureTip">Sensors may have a tough time sticking to rough or bumpy walls or ceilings.</string>
+
+    <!-- Home Screen -->
+    <string name="home.title">Have a good day at work.</string>
+    <string name="home.home.menuButton">{fa-home}</string>
+    <string name="home.menu.modeButton">At Home</string>
+    <string name="no_new_updates">No new updates.</string>
+    <string name="current_status">CURRENT STATUS</string>
+    <string name="current_updats">CURRENT UPDATES</string>
+
+    <!-- Task Status List-->
+    <string name="taskStatusList.currentStatusHeader">Current Status</string>
+    <string name="taskStatusList.empty">You don\'t seem to have any tasks. \\n You can add one using the button below.</string>
+    <string name="taskStatusItem.taskName">[Task Name]</string>
+    <string name="taskStatusItem.spacer"> - </string>
+    <string name="taskStatusItem.taskStatus">[Task Status]</string>
+    <string name="taskStatusItem.eventTime">[Event Time]</string>
+
+    <!-- TaskDetails Screen -->
+    <string name="taskDetails_backButton">{fa-caret-left} Home</string>
+    <string name="taskDetails.taskName.default">[Task Name Here]</string>
+    <string name="taskDetails.taskName.edit">Edit</string>
+    <string name="taskDetails.taskName.cancel">@string/global.cancel</string>
+    <string name="taskDetails.taskName.save">@string/global.save</string>
+    <string name="taskDetails.activityButton">See more activity</string>
+    <string name="taskDetails.shareButton">Share</string>
+    <string name="taskDetails.alerts.description">When would you like to receive alerts?</string>
+    <string name="taskDetails.alerts.home">Send alerts when home</string>
+    <string name="taskDetails.alerts.away">Send alerts when away</string>
+    <string name="taskDetails.alerts.night">Send alerts at night</string>
+    <string name="taskDetails.alerts.setTime">Set time range</string>
+    <string name="taskDetails.alerts.setTimeCancelButton">@string/global.cancel</string>
+    <string name="taskDetails.alerts.setTimeSubmitCancel">@string/global.save</string>
+    <string name="taskDetails.thresholds.description">What temperatures would you like to be notified about?</string>
+    <string name="taskDetails.thresholds.temp.above">Above this temperature</string>
+    <string name="taskDetails.thresholds.temp.below">Below this temperature</string>
+    <string name="taskDetails.deleteTaskButton">{fa-trash} Delete Task</string>
+    <string name="taskDetails.seeAllActivityButton">See All Activity</string>
+    <string name="taskDetails.addNewTasks">+ Add new tasks</string>
+    <string name="taskDetails.taskList.empty">You don\'t seem to have any tasks. \n You can add one using the button below.</string>
+    <string name="taskDetails.heading">CURRENT TASKS</string>
+    <string name="task_added">Added</string>
+    <string name="open">open</string>
+    <string name="leak">leak</string>
+    <string name="smoke">smoke</string>
+    <string name="see_more_activity_header">Below is the last 7 days that had activity for your %s</string>
+    <string name="no_activity_yet">No activity yet</string>
+    <string name="currently">Currently</string>
+
+    <!-- SensorDetails Screen -->
+    <string name="sensorDetails.title">Sensor Details</string>
+    <string name="sensorDetails.sensorId.label">Serial number: </string>
+    <string name="sensorDetails.sensorId.value">[Sensor ID Here]</string>
+    <string name="sensorDetails.deleteSensorButton">{fa-trash} Delete Sensor</string>
+    <string name="serial_number">Serial number:</string>
+    <string name="location">Location</string>
+    <string name="current_location">Current location</string>
+    <string name="customize_location_name">{fa-edit} Customize location name</string>
+    <string name="location_tip">Tip: Changing location will affect all tasks associated with this sensor.</string>
+    <string name="current_tasks">Current Tasks</string>
+    <string name="tasks_reporting">%s Task Reporting</string>
+    <string name="tasks_reporting_plural">%s Tasks Reporting</string>
+    <string name="battery_status">Battery Status</string>
+    <string name="batter_alert_msg">Send an alert when low battery</string>
+    <string name="low_battery">Low</string>
+    <string name="good_battery">Good</string>
+
+    <!-- Settings -->
+    <!-- User Settings -->
+    <!-- User.Account Settings -->
+    <string name="settings.user.account">Account</string>
+    <string name="settings.user.account.logoutButton">Log out</string>
+
+    <!-- User.Contact Settings -->
+    <string name="settings.user.contact">Contact</string>
+    <string name="settings.user.contact.createNewContactButton">Or, create new contact</string>
+    <string name="settings.user.contact.addFromContactButton">+ Add from my contacts</string>
+    <string name="settings.user.contact.addContactText">Add a contact to share alerts.</string>
+
+    <!-- User.System Settings-->
+    <string name="settings.user.systems">Systems</string>
+    <string name="settings.user.systems.addSystemButton">Add new System</string>
+    <string name="settings.user.systems.systemList.empty">You don\'t seem to have any systems. \n You can add one using the button below.</string>
+    <string name="settings.user.systems.details.systemName">[SystemNamePlaceholder]</string>
+    <string name="settings.user.systems.details.systemLocation">[SystemLocationPlaceholder]</string>
+    <string name="settings.user.systems.details.monitoringSince">Monitoring since</string>
+    <string name="settings.user.systems.details.monitoringSinceDate">[MonitoringSincePlaceholder]</string>
+    <string name="settings.user.systems.details.sensorsLabel">Sensors</string>
+    <string name="settings.user.systems.details.sensorsCount">[SensorCountPlaceholder]</string>
+    <string name="settings.user.systems.details.deleteSystemButton">Delete System</string>
+
+    <!-- User.System.Edit Settings - todo: merge with keys from system setup -->
+    <string name="settings.user.systems.details.edit.systemNameLabel">Name</string>
+    <string name="settings.user.systems.details.edit.systemNameDescription">What would you like to call this system?</string>
+    <string name="settings.user.systems.details.edit.systemNamePlaceholder">My Home</string>
+    <string name="settings.user.systems.details.edit.currentLocationLabel">Current location</string>
+    <string name="settings.user.systems.details.edit.location.title">Edit System Location</string>
+    <string name="settings.user.systems.details.edit.location.systemLocation">System Location</string>
+    <string name="settings.user.systems.details.edit.location.useCurrentLocation">{fa-location-arrow} Use my current location</string>
+
+    <!-- System Settings -->
+    <string name="settings.app.systemName">My Home</string>
+
+    <!-- System.Sensors Settings -->
+    <string name="settings.app.sensors">Sensors</string>
+    <string name="settings.app.sensors.sensorList.empty">You don\'t seem to have any sensors. \n You can add one using the button below.</string>
+    <string name="settings.app.sensors.sensorList.emptyNoSystem">You don\'t seem to have an active System. \n You must first create a system before adding Sensors \n Tap here to add one from System Settings.</string>
+    <string name="settings.app.sensors.sensorList.sensorIconDescription">A cute little Notion Sensor</string>
+    <string name="settings.app.sensors.addSensorDescription">It looks like you have %1$s more %2$s to install?</string>
+    <string name="settings.app.sensors.addSensorButton.additionalSensors">+ Add new Sensor</string>
+    <string name="settings.app.sensors.addSensorButton">Add Sensor {fa-long-arrow-right}</string>
+    <string name="settings.app.sensors.signalStrength">Signal strength:</string>
+    <string name="settings.app.sensors.connected">Connected</string>
+    <string name="settings.app.sensors.disconnected">Disconnected</string>
+
+    <!-- System.Alerts Settings -->
+    <string name="settings.app.alerts">Alerts</string>
+    <string name="settings.app.alerts.emergencyNumbers.label">Emergency numbers</string>
+    <string name="settings.app.alerts.emergencyNumbers.description">Fire, police and medical</string>
+    <string name="settings.app.alerts.pushNotifications.label">Push notifications</string>
+    <string name="settings.app.alerts.pushNotifications.warning"><![CDATA[Task alerts will be sent <b>immediately</b> by email while notifications are off.]]></string>
+    <string name="settings.app.alerts.emailDelay.label">Time delay for email notifications</string>
+    <string name="settings.app.alerts.emailDelay.value">[time value here]</string>
+    <string name="settings.app.alerts.nightTimeSettings.title">Night Time Settings</string>
+    <string name="settings.app.alerts.nightTimeSettings.label">Night time settings</string>
+    <string name="settings.app.alerts.nightTimeSettings.instructions">Edit the start and end of your night mode:</string>
+    <string name="settings.app.alerts.nightTimeSettings.to">to</string>
+
+    <!-- System.Bridge Settings -->
+    <string name="settings.app.bridge">Bridge</string>
+    <string name="settings.app.bridge.currentActivity">Current activity</string>
+    <string name="settings.app.bridge.currentActivity.connected">Connected</string>
+    <string name="settings.app.bridge.currentActivity.disconnected">Disconnected</string>
+    <string name="settings.app.bridge.installationDate">Installation date</string>
+    <string name="settings.app.bridge.delete">{fa-trash-o} Delete bridge</string>
+    <string name="settings.app.bridge.bridgeList.empty">You don\'t seem to have any bridges. \n You can add one using the button below.</string>
+
+    <!-- Emergency numbers -->
+    <string name="settings.app.alerts.emergencyNumbers.police">Police department</string>
+    <string name="settings.app.alerts.emergencyNumbers.fire">Fire department</string>
+    <string name="settings.app.alerts.emergencyNumbers.medical">Emergency medical support</string>
+    <string name="settings.app.alerts.emergencyNumbers.disclaimer">These numbers are based on the location of your system. They will be automatically updated if you change your location.</string>
+
+
+    <!-- Push Slide Up Dialog -->
+    <string name="share">Share</string>
+    <string name="dismiss_this_alert">Dismiss this alert</string>
+    <string name="see_activity">See activity</string>
+
+    <!-- General Activities-->
+    <!-- Identify Bridge -->
+    <string name="title_activity_identify_bridge">IdentifyBridgeActivity</string>
+    <string name="general.identifyBridge.cancelButton">@string/global.cancel</string>
+    <string name="general.identifyBridge.backButton">{fa-caret-left} Back</string>
+    <string name="general.identifyBridge.selectBridge">Select a Bridge…</string>
+    <string name="general.identifyBridge.notListed">I don\'t see my bridge listed…</string>
+
+    <!-- Identify Network -->
+    <string name="title_activity_identify_network">IdentifyNetworkActivity</string>
+    <string name="general.identifyNetwork.backButton">{fa-caret-left} Back</string>
+    <string name="general.identifyNetwork.selectNetwork">Select a Bridge…</string>
+    <string name="general.identifyNetwork.cancelButton">@string/global.cancel</string>
+
+    <!-- DON'T TRANSLATE! - TODO: Yank with gradle task before release-->
+    <!-- The Hans Wildebush Bridge Provisioner 8001 & other userful dev options-->
+    <string name="provisionBridge.environment">Current Environment:</string>
+    <string name="provisionBridge.environment.alpha">Alpha</string>
+    <string name="provisionBridge.environment.beta">Beta</string>
+    <string name="provisionBridge.environment.production">Production</string>
+    <string name="provisionBridge.devAppTitle">DevApp Options</string>
+    <string name="provisionBridge.environmentTitle">Environment:</string>
+    <string name="provisionBridge.title">EZ Bridge Provisioner 8001</string>
+    <string name="provisionBridge.details">Manually connect to the Bridge in question, fill in the details below, and the EZ Bridge Provisioner 8001 handles the rest!</string>
+    <string name="provisionBridge.ssid">SSID:</string>
+    <string name="provisionBridge.security">Security: (0 - No Security, 1 - WEP, 4 - WPA2, 5 - WPA/WPA2 Mixed)</string>
+    <string name="provisionBridge.password">Password: (empty if no security)</string>
+    <string name="provisionBridge.provisionBridge">Provision Bridge</string>
+    <string name="provisionBridge.provisioningResult">Bridge Provisioned!</string>
+
+    <!-- Location Display Names -->
+    <string name="location.bathroom">Bathroom</string>
+    <string name="location.bedroom">Bedroom</string>
+    <string name="location.diningRoom">Dining Room</string>
+    <string name="location.entrance">Entrance</string>
+    <string name="location.garage">Garage</string>
+    <string name="location.hallway">Hallway</string>
+    <string name="location.kitchen">Kitchen</string>
+    <string name="location.laundryRoom">Laundry Room</string>
+    <string name="location.livingRoom">Living Room</string>
+    <string name="location.office">Office</string>
+    <string name="location.storageRoom">Storage room</string>
+    <string name="location.other">Other</string>
+    <string name="location.other.description">Add a location of your own</string>
+
+    <!-- Arrays... -->
+    <string-array name="taskLocations">
+        <item>Kitchen</item>
+        <item>Hallway</item>
+        <item>Living Room</item>
+        <item>Dining Room</item>
+        <item>Entrance</item>
+        <item>Bedroom</item>
+        <item>Bathroom</item>
+        <item>Laundry Room</item>
+        <item>Storage Room</item>
+    </string-array>
+
+    <!-- Reusable components -->
+    <string name="customComponents.temperatureSpinner.defaultValue">--</string>
+    <string name="customComponents.temperatureSpinner.raiseButton.description">Click to raise the temperature value</string>
+    <string name="customComponents.temperatureSpinner.lowerButton.description">Click to lower the temperature value</string>
+
+    <!-- Success Screen -->
+    <string name="successScreen.checkMarkDescription">A nice dark teal circle with a pleasant white check mark centered within it.</string>
+    <string name="successScreen.title">[SuccessScreen Title]</string>
+    <string name="successScreen.message">[SuccessScreen Description]</string>
+    <string name="successScreen.confirm">Okay {fa-long-arrow-right}</string>
+    <string name="successScreen.cancel">Okay {fa-long-arrow-right}</string>
+
+    <!-- Account Created -->
+    <string name="successScreen.accountCreated.title">Account created!</string>
+    <string name="successScreen.accountCreated.message">We\'ll send an email to your account welcoming you to Notion.</string>
+
+    <!-- System Created Strings -->
+    <string name="successScreen.systemCreated.title">System created!</string>
+    <string name="successScreen.systemCreated.message">Now the fun part. Adding some sensors!</string>
+
+    <!-- Bridge Added Strings -->
+    <string name="successScreen.bridgeAdded.title">Bridge added!</string>
+    <string name="successScreen.bridgeAdded.message">Check it out in the Bridge list in System Settings {fa-cog}.</string>
+
+    <!-- Bridge COnfigured Strings -->
+    <string name="successScreen.bridgeConfigured.title">Bridge configured!</string>
+    <string name="successScreen.bridgeConfigured.message">When solid green, the Notion Bridge is connected to the internet.</string>
+
+    <!-- Sensor Scanned -->
+    <string name="successScreen.sensorScanned.title">Sensor identified!</string>
+    <string name="successScreen.sensorScanned.message">Installing your sensor within 20ft of your bridge will ensure optimal connectivity.</string>
+
+    <!-- Sensor Added -->
+    <string name="successScreen.taskAdded.title">Task Added!</string>
+    <string name="successScreen.taskAdded.confirm">Done</string>
+
+    <!-- Sensor Added -->
+    <string name="successScreen.sensorAdded.title">Sensor Added!</string>
+    <string name="successScreen.sensorAdded.cancel">Done</string>
+    <string name="successScreen.sensorAdded.confirm">Add another</string>
+
+    <!-- Login Successful -->
+    <string name="successScreen.login.title">Login Successful!</string>
+    <string name="successScreen.login.message">You\'ve been successfully logged in.</string>
+
+    <!-- Logout Successful -->
+    <string name="successScreen.logout.title">Logout Successful!</string>
+    <string name="successScreen.logout.message">You\'ve been successfully logged out.</string>
+
+    <!-- Dialogs -->
+    <!-- Cancel AccountSetup -->
+    <string name="dialogs.accountSetup.title">Are you sure?</string>
+    <string name="dialogs.accountSetup.message">If you go back, all of the information you\'ve added will be lost.</string>
+
+    <!-- Logout Confirmation -->
+    <string name="dialogs.logoutConfirmation.title">Are you sure?</string>
+    <string name="dialogs.logoutConfirmation.message">If you log out, you won\'t have access to your account on this device without logging back in.</string>
+    <string name="dialogs.logoutConfirmation.confirmTitle">Log out</string>
+
+    <!-- Create Email Error -->
+    <string name="dialogs.createEmailError.title">Error creating account</string>
+    <string name="dialogs.createEmailError.message">Generic error.</string>
+    <string name="dialogs.createEmailError.message.emailTaken">Email address already taken.</string>
+
+    <!-- Reset Password Error -->
+    <string name="dialogs.resetPasswordError.title">Error resetting password</string>
+    <string name="dialogs.resetPasswordError.message">Error requesting a password reset. Please try again.</string>
+
+    <!-- Create Sensor Error -->
+    <string name="dialogs.createSensorError.title">Error creating sensor</string>
+    <string name="dialogs.createSensorError.message">Generic error.</string>
+
+    <!-- Create Location Error -->
+    <string name="dialogs.createLocationError.title">Error creating location</string>
+    <string name="dialogs.createLocationError.message">Generic error.</string>
+
+    <!-- Install Sensor Error -->
+    <string name="dialogs.installSensorError.title">Error installing sensor</string>
+    <string name="dialogs.installSensorError.message">Generic error.</string>
+    <string name="dialogs.installSensorError.message.bridgeNotConnected">Please ensure your Bridge is plugged in and connected to your Wi-Fi (displaying a solid green light).</string>
+    <string name="dialogs.installSensorError.message.sensorNotConnected">Please knock on your sensor to wake it up, and try again.</string>
+
+    <!-- Still Calibrating -->
+    <string name="dialogs.stillCalibrating.title">Still Calibrating Sensor…</string>
+    <string name="dialogs.stillCalibrating.message">Calibration is taking longer than expected. Hold tight, and please try again.</string>
+
+    <!-- Install Sensor Confirmation-->
+    <string name="dialogs.installSensorConfirmation.title">Confirm installation</string>
+    <string name="dialogs.installSensorConfirmation.message">Have you attached the sensor as per the instructions?</string>
+    <string name="dialogs.installSensorConfirmation.confirm">Not yet</string>
+    <string name="dialogs.installSensorConfirmation.cancel">Yes</string>
+
+    <!-- Provision Bridge WEP Warning -->
+    <string name="dialogs_provisionWepWarning_title">Warning:</string>
+    <string name="dialogs_provisionWepWarning_message">We noticed your WiFi network security is set to WEP. Please refer to our Knowledge Base for assistance.</string>
+
+    <!-- Provision Bridge Error -->
+    <string name="dialogs.provisionBridgeError.credentials.title">Error provisioning bridge</string>
+    <string name="dialogs.provisionBridgeError.credentials.message">We were unable to provision your bridge. Please verify your network credentials and try again.</string>
+
+    <!-- Update AlertPrefs Error -->
+    <string name="dialogs.updateAlertPrefsError.title">Error updating alert preferences</string>
+
+    <!-- Update SystemMode Error -->
+    <string name="dialogs.updateSystemModeError.title">Error updating system mode</string>
+
+    <!-- Provision Bridge - Credentials Error -->
+    <string name="dialogs.provisionBridgeError.title">Error configuring Bridge</string>
+    <string name="dialogs.provisionBridgeError.message">We were unable to configure your Bridge. Please try again.</string>
+    <string name="dialogs.provisionBridgeError.messageFailedToConnectGeneric">We were unable to connect to your Bridge. Please try again, or manually connect to it via WiFi Settings and try again.</string>
+    <string name="dialogs.provisionBridgeError.messageAuthenticationError">We were unable to connect your Bridge to your WiFi network. Please double check your credentials and try again.</string>
+
+    <!-- Select Location Error -->
+    <string name="dialogs.selectLocationError.title">Error Adding Location</string>
+    <string name="dialogs.selectLocationError.message">Please select a location to continue.</string>
+
+    <!-- System Setup Error -->
+    <string name="dialogs.systemSetupError.title">Error adding System</string>
+    <string name="dialogs.systemSetupError.message">Your bridge was configured, but we failed to create your System with Notion. Please try again.</string>
+
+    <!-- Adding Bridge Error -->
+    <string name="dialogs.addingBridgeError.title">Error adding Bridge</string>
+    <string name="dialogs.addingBridgeError.message">Your bridge was configured, but we failed to add it to your System. Please try again.</string>
+
+    <!-- Network Error -->
+    <string name="dialogs.networkError.title">Network Error</string>
+    <string name="dialogs.networkError.message">Please check your network connectivity.</string>
+
+    <!-- Error Updating Night Time Settings-->
+    <string name="dialogs.nightSettingsError.title">Error updating Night Time Settings</string>
+    <string name="dialogs.nightSettingsError.message">The following error occurred when attempting to update your night time settings:</string>
+
+    <!-- Delete Sensor Warning -->
+    <string name="dialogs.deleteSystemWarning.title">Are you Sure?</string>
+    <string name="dialogs.deleteSystemWarning.message">When you delete a system, you\'ll lose all associated sensors, tasks, and data.</string>
+
+    <!-- Delete Sensor Error -->
+    <string name="dialogs.deleteSystemError.title">Error deleting system</string>
+    <string name="dialogs.deleteSystemError.message">The following error occurred when attempting to delete your system:</string>
+
+    <!-- Delete Sensor Warning -->
+    <string name="dialogs.deleteSensorWarning.title">Are you Sure?</string>
+    <string name="dialogs.deleteSensorWarning.message">When you delete a sensor, you\'ll lose all associated tasks and data.</string>
+
+    <!-- Delete Sensor Error -->
+    <string name="dialogs.deleteSensorError.title">Error deleting sensor</string>
+    <string name="dialogs.deleteSensorError.message">The following error occurred when attempting to delete your sensor:</string>
+
+    <!-- Delete Task Warning -->
+    <string name="dialogs.deleteTaskWarning.title">Are you Sure?</string>
+    <string name="dialogs.deleteTaskWarning.message">When you delete a task, you\'ll lose all associated data.</string>
+
+    <!-- Delete Task Error -->
+    <string name="dialogs.deleteTaskError.title">Error deleting task</string>
+    <string name="dialogs.deleteTaskError.message">The following error occurred when attempting to delete your task:</string>
+
+    <!-- Delete Bridge Warning -->
+    <string name="dialogs.deleteBridgeWarning.title">Are you Sure?</string>
+    <string name="dialogs.deleteBridgeWarning.message">If you delete this bridge, your sensors may stop reporting data properly.</string>
+
+    <!-- Delete Bridge Error -->
+    <string name="dialogs.deleteBridgeError.title">Error deleting bridge</string>
+    <string name="dialogs.deleteBridgeError.message">The following error occurred when attempting to delete your bridge:</string>
+
+    <!-- Task Not Available Error -->
+    <string name="dialogs.taskNotAvailable.title">Task not available</string>
+    <string name="dialogs.taskNotAvailable.message">Would you like to unselect all current selections and start over?</string>
+    <string name="dialogs.taskNotAvailable.confirm">Reset List</string>
+
+    <!-- Permissions Dialogs -->
+    <!--  Error -->
+    <string name="dialogs.permissions.title">Permission required</string>
+    <string name="dialogs.permissions.confirmTitle">Go to App Settings</string>
+    <string name="dialogs.permissions.camera.message">Camera permissions are required to continue. Please go into App Settings and enable to continue.</string>
+    <string name="dialogs.permissions.contact.message">Contact permissions are required to continue. Please go into App Settings and enable to continue.</string>
+    <string name="dialogs.permissions.location.message">Location permissions are required to continue. Please go into App Settings and enable to continue.</string>
+
+    <!-- Response Code Errors-->
+    <string name="errors.bridge.responseCodeErrors.networkNotAvailable">It looks like your device wasn\'t able to automatically disconnect from the Bridge. Please reconnect to your wi-fi and try again.</string>
+    <string name="errors.bridge.responseCodeErrors.422">Bridge already exists on another account.</string>
+
+    <!-- WifiNetworksDialog -->
+    <string name="dialogs.wifiNetworksDialog.title">Select Your Wifi Network</string>
+    <string name="dialogs.wifiNetworksDialog.titleOnlyBridges">Select Your Bridge</string>
+
+    <!-- Icons - using fontawesome icons within its own TextView for the time being. -->
+    <!-- There seems to be issues w/ fontWeight/styling if used in combination with text-->
+    <string name="icons.arrow.up">{fa-long-arrow-up}</string>
+    <string name="icons.arrow.right">{fa-long-arrow-right}</string>
+    <string name="icons.arrow.left">{fa-long-arrow-left}</string>
+    <string name="icons.arrow.down">{fa-long-arrow-down}</string>
+    <string name="icons.bridge.identify">{fa-ban}</string>
+    <string name="icons.bridge.error">{fa-ban}</string>
+    <string name="icons.bug">{fa-bug}</string>
+    <string name="icons.caret.down">{fa-caret-down}</string>
+    <string name="icons.caret.up">{fa-caret-up}</string>
+    <string name="icons.chevron.down">{fa-chevron-down}</string>
+    <string name="icons.chevron.left">{fa-chevron-left}</string>
+    <string name="icons.chevron.right">{fa-chevron-right}</string>
+    <string name="icons.chevron.up">{fa-chevron-up}</string>
+    <string name="icons.chooser">{fa-angle-right}</string>
+    <string name="icons.chooserOpen">{fa-angle-down}</string>
+    <string name="icons.edit">{fa-edit}</string>
+    <string name="icons.error">{fa-ban}</string>
+    <string name="icons.eye.open">{fa-eye}</string>
+    <string name="icons.eye.slash">{fa-eye-slash}</string>
+    <string name="icons.gear">{fa-gear}</string>
+    <string name="icons.home">{fa-home}</string>
+    <string name="icons.horizontalPager.previous">{fa-chevron-left}</string>
+    <string name="icons.horizontalPager.next">{fa-chevron-right}</string>
+    <string name="icons.sensor.add">{fa-plus-circle}</string>
+    <string name="icons.system">{fa-home}</string>
+    <string name="icons.trash">{fa-trash}</string>
+    <string name="icons.user">{fa-user}</string>
+    <string name="icons.user.add">{fa-user-plus}</string>
+    <string name="icons.check">{fa-check}</string>
+    <string name="icons.check.circle">{fa-check-circle}</string>
+    <string name="icons.back">{fa-caret-left}</string>
+    <string name="icons.phone">{fa-phone-square}</string>
+    <string name="icons.angle.right">{fa-angle-right}</string>
+
+    <!-- Screen Titles-->
+    <string name="title.addNewBridgeActivity.addNewBridge">Add New Bridge</string>
+    <string name="title.addNewBridgeActivity.createSystem">Create System</string>
+    <string name="title.addNewBridgeActivity.provisionBridge">Reconfigure Bridge</string>
+
+    <!-- Activity titles as referenced in manifest-->
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_account_created">AccountCreatedActivity</string>
+    <string name="setup.system.network.password.label">Password</string>
+    <string name="title_activity_system_created">SystemCreatedActivity</string>
+    <string name="title_activity_login_successful">LoginSuccessfulActivity</string>
+    <string name="title_activity_logout_successful">LogoutSuccessfulActivity</string>
+    <string name="title_activity_scan_sensor">Scan Sensor</string>
+    <string name="title_activity_select_location">Select Location</string>
+    <string name="title_activity_select_tasks">Select Tasks</string>
+    <string name="title_activity_orientation_selection">Task Details</string>
+    <string name="title_activity_install_instructions">Install Instructions</string>
+    <string name="title_activity_task_list">TaskListActivity</string>
+    <string name="title_activity_home">HomeActivity</string>
+    <string name="title_activity_review_tasks">ReviewTasksActivity</string>
+    <string name="title_activity_sensor_added">SensorAddedActivity</string>
+    <string name="title_activity_provision_bridge">ProvisionBridge</string>
+    <string name="title_activity_settings">SettingsActivity</string>
+    <string name="title_activity_task_details">TaskDetailsActivity</string>
+    <string name="title_activity_forgot_password">ForgotPasswordActivity</string>
+    <string name="title_activity_sensor_details">SensorDetailsActivity</string>
+    <string name="title_activity_plugin_bridge">@string/title.addNewBridgeActivity.createSystem</string>
+    <string name="title_activity_add_new_bridge">AddNewBridgeActivity</string>
+    <string name="title_activity_edit_settings">EditSettingsActivity</string>
+    <string name="title_activity_system_details">SystemDetailsActivity</string>
+    <string name="title_activity_edit_system_name">EditSystemNameActivity</string>
+    <string name="title_activity_edit_emergency_numbers">EditEmergencyNumbersActivity</string>
+
+    <!-- DateUtils strings -->
+    <string name="less_than_a_minute_ago">Less than a minute ago</string>
+    <string name="about_a_minute_ago">About a minute ago</string>
+    <string name="about_blank_minutes_ago">About %d minutes ago</string>
+    <string name="about_an_hour_ago">About an hour ago</string>
+    <string name="about_blank_hours_ago">About %d hours ago</string>
+    <string name="about_a_day_ago">About a day ago</string>
+    <string name="about_blank_days_ago">About %d days ago</string>
+
+</resources>

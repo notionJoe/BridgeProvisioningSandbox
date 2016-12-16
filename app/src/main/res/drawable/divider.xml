@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2015 Loop Labs, Inc. All rights reserved.
+  -->
+
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <size android:height="1dp" />
+    <solid android:color="@color/notion_divider" />
+    <padding
+        android:left="@dimen/notion.mainContent.paddingStart"
+        android:top="10dp"
+        android:right="@dimen/notion.mainContent.paddingEnd"
+        android:bottom="10dp" />
+</shape>

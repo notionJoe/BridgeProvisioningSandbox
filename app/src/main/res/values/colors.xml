@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="notion_white">#FFFFFF</color>
+    <color name="notion_trans_10_white">#19FFFFFF</color>
+    <color name="notion_trans_30_white">#4CFFFFFF</color>
+    <color name="notion_trans">#00000000</color>
+    <color name="notion_light_grey">#F7F7F7</color>
+    <color name="notion_inactive">#D8D8D8</color>
+    <color name="notion_light_grey_inactive">#D1D3D4</color>
+    <color name="notion_mediumish_grey">#BCBEC0</color>
+    <color name="notion_medium_grey">#A3A19F</color>
+    <color name="notion_icon_grey">#C8CACB</color>
+    <color name="notion_dark_grey">#75726F</color>
+    <color name="notion_qr_scan_overlay">#C6000000</color>
+    <color name="notion_darker_grey">#545354</color>
+    <color name="notion_darker_grey2">#3A3833</color>
+    <color name="notion_teal">#96D3C1</color>
+    <color name="notion_dark_teal">#83B9A9</color>
+    <color name="notion_red">#E87960</color>
+    <color name="notion_dark_red">#D16D57</color>  <!-- 90% of each RGB color in notion_red -->
+    <color name="notion_yellow">#FEE09A</color>
+    <color name="notion_dark_yellow">#C8CA8C</color>   <!-- 90% of each RGB color in notion_red -->
+    <color name="notion_chooser_border_color">#D1D3D4</color>
+    <color name="notion_divider">#E6E6E5</color>
+</resources>

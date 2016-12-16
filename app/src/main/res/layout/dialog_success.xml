@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2015 Loop Labs, Inc. All rights reserved.
+  -->
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rootContainer"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/notion_teal"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:orientation="vertical"
+        >
+
+        <FrameLayout
+            android:id="@+id/createdImage"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="32dp"
+            android:contentDescription="@string/successScreen.checkMarkDescription">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:background="@drawable/circle_indicator_white"/>
+
+            <com.joanzapata.iconify.widget.IconTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/icons.check"
+                android:textColor="@color/notion_teal"
+                android:textSize="26sp"/>
+
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/titleTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="25dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginStart="30dp"
+            android:gravity="center"
+            android:text="@string/successScreen.title"
+            android:textColor="@color/notion_white"
+            android:textSize="36sp"
+            android:textStyle="bold"
+            />
+
+        <com.joanzapata.iconify.widget.IconTextView
+            android:id="@+id/messageTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="30dp"
+            android:layout_marginStart="30dp"
+            android:gravity="center"
+            android:text="@string/successScreen.message"
+            android:textColor="@color/notion_white"
+            android:textSize="20sp"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/notion_teal"
+        android:layout_alignParentBottom="true"
+        >
+
+        <View
+            android:id="@+id/horizontal_divider"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dialog_divider_size"
+            android:background="@color/notion_trans_30_white"/>
+
+        <RelativeLayout
+            android:id="@+id/button_container"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/button_height_tall"
+            android:background="@color/notion_teal">
+
+            <View
+                android:id="@+id/vertical_divider"
+                android:layout_width="@dimen/dialog_divider_size"
+                android:layout_height="match_parent"
+                android:layout_centerHorizontal="true"
+                android:background="@color/notion_trans_30_white"/>
+
+            <com.joanzapata.iconify.widget.IconButton
+                android:id="@+id/cancel_button"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentStart="true"
+                android:layout_toStartOf="@id/vertical_divider"
+                android:background="?attr/selectableItemBackground"
+                android:textColor="@color/notion_white"
+                android:textSize="18sp"
+                />
+
+            <com.joanzapata.iconify.widget.IconButton
+                android:id="@+id/confirm_button"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentEnd="true"
+                android:layout_toEndOf="@id/vertical_divider"
+                android:background="?attr/selectableItemBackground"
+                android:textColor="@color/notion_white"
+                android:textSize="18sp"
+                />
+
+        </RelativeLayout>
+    </LinearLayout>
+
+</RelativeLayout>
+

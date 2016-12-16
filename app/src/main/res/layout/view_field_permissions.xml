@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2015 Loop Labs, Inc. All rights reserved.
+  -->
+<merge xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Expanded View -->
+    <!--This is wrapped in a ScrollView already in activity_add_new_bridge -->
+    <LinearLayout
+        android:id="@+id/permissionsFieldExpandedView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:showDividers="middle"
+        android:divider="@drawable/divider"
+        >
+
+        <!-- Location Permissions -->
+        <RelativeLayout
+            android:id="@+id/locationPermissionsView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            >
+            <TextView
+                android:id="@+id/locationPermissionsTitleTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/setup.system.permissions.location.label"
+                android:textStyle="bold"
+                android:layout_marginBottom="5dp"
+                android:textColor="@color/notion_dark_grey"
+                android:textSize="20sp"
+                />
+            <android.support.v7.widget.SwitchCompat
+                android:id="@+id/locationPermissionsSwitchCompat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/locationPermissionsTitleTextView"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                />
+            <TextView
+                android:id="@+id/locationPermissionsDescriptionTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/locationPermissionsTitleTextView"
+                android:layout_alignParentStart="true"
+                android:layout_toStartOf="@id/locationPermissionsSwitchCompat"
+                android:layout_marginEnd="10dp"
+                android:lineSpacingExtra="2dp"
+                android:text="@string/setup.system.permissions.location.description"
+                style="@style/label_active"
+                />
+
+        </RelativeLayout>
+
+        <!--Write Settings Permissions -->
+        <RelativeLayout
+            android:id="@+id/writeSettingsPermissionsView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:visibility="gone"
+            >
+
+            <TextView
+                android:id="@+id/writeSettingsPermissionsTitleTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/setup.system.permissions.writeSettings.label"
+                android:textStyle="bold"
+                android:layout_marginBottom="5dp"
+                android:textColor="@color/notion_dark_grey"
+                android:textSize="20sp"
+                />
+            <android.support.v7.widget.SwitchCompat
+                android:id="@+id/writeSettingsPermissionsSwitchCompat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/writeSettingsPermissionsTitleTextView"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                />
+            <TextView
+                android:id="@+id/writeSettingsPermissionsDescriptionTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/writeSettingsPermissionsTitleTextView"
+                android:layout_alignParentStart="true"
+                android:layout_toStartOf="@id/writeSettingsPermissionsSwitchCompat"
+                android:layout_marginEnd="10dp"
+                android:lineSpacingExtra="2dp"
+                android:text="@string/setup.system.permissions.writeSettings.description"
+                style="@style/label_active"
+                />
+        </RelativeLayout>
+
+    </LinearLayout>
+
+
+    <!-- Collapsed View -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="?android:attr/listPreferredItemHeight"
+        >
+        <com.joanzapata.iconify.widget.IconTextView
+            android:id="@+id/editIcon"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:text="@string/icons.edit"
+            />
+        <TextView
+            android:id="@+id/permissionsLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:text="@string/setup.system.permissions.label"
+            android:singleLine="true"
+            style="@style/label_inactive"
+            />
+        <TextView
+            android:id="@+id/permissionsTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/permissionsLabel"
+            android:text="@string/setup.system.permissions.description"
+            android:singleLine="true"
+            style="@style/field_inactive"
+            />
+    </RelativeLayout>
+</merge>

@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- TODO: Follow organization from styles_material.xml - this is getting silly ;p -->
+    <style name="HeaderButton">
+        <item name="android:minHeight">@dimen/button_height_normal</item>
+        <item name="android:paddingStart">10dp</item>
+        <item name="android:paddingBottom">10dp</item>
+        <item name="android:textSize">16sp</item>
+        <item name="textAllCaps">true</item>
+    </style>
+    <style name="HeaderButton.DarkGrey">
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:background">@color/notion_medium_grey</item>
+        <item name="android:gravity">left|bottom</item>
+    </style>
+    <style name="HeaderButton.DarkGrey.UnderStatusBar">
+        <item name="android:minHeight">@dimen/button_height_short</item>
+    </style>
+    <style name="HeaderButton.White">
+        <item name="android:textColor">@color/notion_mediumish_grey</item>
+        <item name="android:background">@color/notion_white</item>
+        <item name="android:gravity">left|center_vertical</item>
+    </style>
+
+    <style name="BackButton">
+        <item name="android:paddingStart">10dp</item>
+        <item name="android:paddingEnd">10dp</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:gravity">left|center_vertical</item>
+    </style>
+    <style name="BackButton.White">
+        <item name="android:textColor">@color/notion_mediumish_grey</item>
+        <item name="android:background">@color/notion_white</item>
+    </style>
+
+
+    <style name="FooterButton">
+        <item name="android:minHeight">@dimen/button_height_tall</item>
+        <item name="fontPath">@string/font.semibold</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+    <style name="FooterButton.White">
+        <item name="android:textColor">@color/notion_dark_teal</item>
+        <item name="android:background">@color/notion_white</item>
+    </style>
+    <style name="FooterButton.White.Delete">
+        <item name="android:textColor">@color/notion_red</item>
+        <item name="android:background">@drawable/rect_button_white</item>
+        <item name="android:minHeight">@dimen/button_height_short</item>
+    </style>
+    <style name="FooterButton.Teal">
+        <item name="android:textColor">@color/notion_white</item>
+        <item name="android:background">@color/notion_teal</item>
+    </style>
+    <style name="FooterButton.Teal.AboveKeyboard">
+        <item name="android:minHeight">@dimen/button_height_medium</item>
+    </style>
+    <style name="FooterButton.DarkTeal">
+        <item name="android:textColor">@color/notion_white</item>
+        <item name="android:background">@color/notion_dark_teal</item>
+    </style>
+    <style name="FooterButton.LightGrey">
+        <item name="android:textColor">@color/notion_dark_grey</item>
+        <item name="android:background">@color/notion_light_grey</item>
+    </style>
+    <style name="FooterButton.Yellow">
+        <item name="android:textColor">@color/notion_dark_grey</item>
+        <item name="android:background">@color/notion_yellow</item>
+    </style>
+
+    <style name="MenuButton">
+        <item name="android:minHeight">@dimen/button_touch_target_height</item>
+        <item name="android:minWidth">@dimen/button_touch_target_width</item>
+        <item name="android:textColor">@color/notion_mediumish_grey</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="MenuButton.Icon">
+        <item name="android:textColor">@color/notion_mediumish_grey</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+    <style name="MenuButton.Icon.Selected">
+        <item name="android:textColor">@color/notion_teal</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+    <style name="MenuButton.Text">
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="HeaderChooser">
+        <item name="android:textColor">@color/notion_white</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textSize">24sp</item>
+        <!-- TODO: Can't do custom fonts in xml, use weight now, and then move to code -->
+        <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">@string/font.bold</item>
+    </style>
+
+    <style name="PillButton">
+        <item name="android:textColor">@color/notion_teal</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textAlignment">gravity</item>
+    </style>
+    <style name="PillButton.Solid">
+        <item name="android:textColor">@color/notion_white</item>
+        <item name="android:background">@color/notion_teal</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="ToggleButton">
+        <item name="android:textOff"/>
+        <item name="android:textOn"/>
+    </style>
+</resources>

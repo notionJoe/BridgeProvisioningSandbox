@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2015 Loop Labs, Inc. All rights reserved.
+  -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                tools:context="com.getnotion.android.activities.setup.system.SystemSetupActivity"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/notion_light_grey"
+                android:fitsSystemWindows="true"
+    >
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_alignParentTop="true"
+        android:background="@color/notion_medium_grey"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        tools:ignore="UnusedAttribute"/>
+
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/addNewBridgeScrollView"
+                android:layout_below="@id/toolbar"
+                android:layout_above="@+id/addNewBridgeFooterButtonContainer"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/notion_white"
+        >
+        <LinearLayout
+            android:id="@+id/addNewBridgeFieldContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:showDividers="middle"
+            android:divider="@drawable/divider"
+            android:dividerPadding="10dp"
+            >
+            <!-- SystemName Field -->
+            <com.getnotion.android.bridgeprovisioner.views.SystemNameField
+                android:id="@+id/systemNameField"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                style="@style/CollapsibleField"
+                android:visibility="gone"
+                >
+            </com.getnotion.android.bridgeprovisioner.views.SystemNameField>
+            <!-- Permission Field -->
+            <com.getnotion.android.bridgeprovisioner.views.PermissionsField
+                android:id="@+id/permissionsField"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                style="@style/CollapsibleField"
+                android:visibility="gone"
+                >
+            </com.getnotion.android.bridgeprovisioner.views.PermissionsField>
+            <!-- Bridge Field -->
+            <com.getnotion.android.bridgeprovisioner.views.SystemBridgeField
+                android:id="@+id/bridgeField"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                style="@style/CollapsibleField"
+                android:visibility="gone"
+                >
+            </com.getnotion.android.bridgeprovisioner.views.SystemBridgeField>
+            <!-- Wifi Field-->
+            <com.getnotion.android.bridgeprovisioner.views.SystemNetworkField
+                android:id="@+id/networkField"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                style="@style/CollapsibleField"
+                android:visibility="gone"
+                >
+            </com.getnotion.android.bridgeprovisioner.views.SystemNetworkField>
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- Container for ProgressBar/Button -->
+    <FrameLayout
+        android:id="@id/addNewBridgeFooterButtonContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        >
+        <com.joanzapata.iconify.widget.IconButton
+            android:id="@+id/addNewBridgeFooterButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/setup.system.addSystemButton"
+            android:layout_gravity="center_horizontal"
+            style="@style/FooterButton.Teal"
+            />
+
+        <ProgressBar
+            android:id="@+id/addNewBridgeProgressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|start"
+            android:translationZ="2dp"
+            android:layout_marginStart="30dp"
+            android:visibility="gone"
+            tools:ignore="UnusedAttribute"/>
+    </FrameLayout>
+
+    <View
+        android:id="@+id/busyOverlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_above="@id/addNewBridgeFooterButtonContainer"
+        android:layerType="hardware"
+        android:alpha="0"
+        android:background="@android:color/white"
+        android:visibility="gone"
+        />
+</RelativeLayout>

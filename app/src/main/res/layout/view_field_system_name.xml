@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2015 Loop Labs, Inc. All rights reserved.
+  -->
+<merge xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Expanded View -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+        <TextView
+            android:id="@+id/systemNameDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/setup.system.name.description"
+            style="@style/label_active"
+            />
+        <EditText
+            android:id="@+id/systemNameEditText"
+            android:imeOptions="actionDone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textCapWords"
+            android:hint="@string/setup.system.name.placeholder"
+            android:text="@string/setup.system.name"
+            style="@style/field_active"
+            />
+        <TextView
+            android:id="@+id/systemNameError"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:text="@string/setup.system.name.error"
+            style="@style/label_error"
+            android:visibility="invisible"
+            />
+    </LinearLayout>
+
+    <!-- Collapsed View -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="?android:attr/listPreferredItemHeight"
+        >
+        <com.joanzapata.iconify.widget.IconTextView
+            android:id="@+id/editIcon"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:text="@string/icons.edit"
+            />
+        <TextView
+            android:id="@+id/systemNameLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:text="@string/setup.system.name.label"
+            android:singleLine="true"
+            style="@style/label_inactive"
+            />
+        <TextView
+            android:id="@+id/systemNameTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/systemNameLabel"
+            android:singleLine="true"
+            style="@style/field_inactive"
+            />
+    </RelativeLayout>
+</merge>

@@ -1,0 +1,11 @@
+.gradle
+/local.properties
+/.idea
+/build
+*.iml
+/app/fabric.properties
+/app/newrelic.properties
+.DS_Store
+/reports
+*.apk
+/projectFilesBackup/*

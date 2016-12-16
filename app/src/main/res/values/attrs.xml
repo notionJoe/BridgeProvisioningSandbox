@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2015 Loop Labs, Inc. All rights reserved.
+  -->
+
+<resources>
+    <declare-styleable name="CustomOptionsView">
+        <attr name="customText" format="string" localization="suggested" />
+        <attr name="customColor" format="color" />
+        <attr name="labelPosition" format="enum">
+            <enum name="left" value="0"/>
+            <enum name="right" value="1"/>
+        </attr>
+    </declare-styleable>
+
+    <!-- CollapsibleField Custom Attributes -->
+    <declare-styleable name="CollapsibleField">
+        <attr name="overviewLabel" format="string" localization="suggested" />
+        <attr name="overviewDescription" format="string" localization="suggested" />
+        <attr name="detailsLabel" format="string" localization="suggested" />
+        <attr name="detailsDescription" format="string" localization="suggested" />
+        <attr name="detailsError" format="string" localization="suggested" />
+    </declare-styleable>
+
+    <!-- TaskEventsViewer Custom Attributes -->
+    <declare-styleable name="TaskEventsLayout">
+        <attr name="systemId" format="string" localization="suggested" />
+        <attr name="taskId" format="string" localization="suggested" />
+    </declare-styleable>
+
+</resources>

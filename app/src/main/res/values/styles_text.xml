@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- TODO: Follow organization from styles_material.xml - this is getting silly ;p -->
+    <style name="WelcomeText">
+        <item name="fontPath">@string/font.light</item>
+        <item name="android:textColor">@color/notion_white</item>
+        <item name="android:textSize">30sp</item>
+    </style>
+    <style name="H1">
+        <item name="fontPath">@string/font.extrabold</item>
+        <item name="android:textColor">@color/notion_dark_grey</item>
+        <item name="android:textSize">48sp</item>
+    </style>
+    <style name="H2">
+        <item name="fontPath">@string/font.extrabold</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/notion_dark_grey</item>
+        <item name="android:textSize">24sp</item>
+    </style>
+    <style name="details">
+        <item name="fontPath">@string/font.regular</item>
+        <item name="android:textColor">@color/notion_medium_grey</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="Notion"/>
+    <style name="Notion.HintText">
+        <item name="fontPath">@string/font.regular</item>
+        <item name="android:textColor">@color/notion_medium_grey</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+    <style name="Notion.HintLink">
+        <item name="fontPath">@string/font.bold</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/notion_teal</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+    <style name="Notion.DescriptionText">
+        <item name="fontPath">@string/font.regular</item>
+        <item name="android:textColor">@color/notion_medium_grey</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+    <style name="smallHint">
+        <item name="fontPath">@string/font.regular</item>
+        <item name="android:textColor">@color/notion_medium_grey</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+    <style name="smallHintLink">
+        <item name="fontPath">@string/font.bold</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/notion_teal</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+    <style name="label_active">
+        <item name="fontPath">@string/font.regular</item>
+        <item name="android:textColor">@color/notion_medium_grey</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+    <style name="label_inactive">
+        <item name="fontPath">@string/font.regular</item>
+        <item name="android:textColor">@color/notion_mediumish_grey</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+    <style name="label_error">
+        <item name="fontPath">@string/font.regular</item>
+        <item name="android:textColor">@color/notion_red</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+    <style name="field_active">
+        <item name="fontPath">@string/font.regular</item>
+        <item name="android:textColor">@color/notion_dark_grey</item>
+        <item name="android:textSize">24sp</item>
+    </style>
+    <style name="field_inactive">
+        <item name="fontPath">@string/font.regular</item>
+        <item name="android:textColor">@color/notion_dark_grey</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+    <style name="field_error">
+        <item name="fontPath">@string/font.regular</item>
+        <item name="android:textColor">@color/notion_red</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+    <style name="header_description">
+        <item name="fontPath">@string/font.regular</item>
+        <item name="android:background">@color/notion_medium_grey</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:paddingStart">30dp</item>
+        <item name="android:paddingEnd">30dp</item>
+        <item name="android:paddingBottom">10dp</item>
+    </style>
+
+    <!-- Settings -->
+    <style name="SettingsDetailsHeader">
+        <item name="fontPath">@string/font.regular</item>
+        <item name="android:background">@color/notion_light_grey</item>
+        <item name="android:padding">@dimen/settings.details.header.padding</item>
+    </style>
+
+    <!-- TaskStatus List -->
+    <style name="TaskStatusListHeaderText">
+        <item name="fontPath">@string/font.regular</item>
+        <item name="android:textColor">@color/notion_light_grey_inactive</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+    <style name="TaskStatusListItem">
+        <item name="fontPath">@string/font.regular</item>
+        <item name="android:textColor">@color/notion_white</item>
+        <item name="android:textSize">16sp</item>
+        <!--<item name="android:textStyle">bold</item>-->
+    </style>
+    <style name="TaskStatusListTime">
+        <item name="fontPath">@string/font.regular</item>
+        <item name="android:textColor">@color/notion_light_grey_inactive</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <!-- Systems List -->
+    <style name="SystemListItemSystemName">
+        <item name="fontPath">@string/font.regular</item>
+        <item name="android:textColor">@color/notion_dark_grey</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+    <style name="SystemListItemSystemDetails">
+        <item name="fontPath">@string/font.regular</item>
+        <item name="android:textColor">@color/notion_mediumish_grey</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <!-- SensorDetails Task List -->
+    <style name="SensorDetailsTaskListTaskName">
+        <item name="fontPath">@string/font.regular</item>
+        <item name="android:textColor">@color/notion_medium_grey</item>
+        <item name="android:textSize">24sp</item>
+    </style>
+    <style name="SensorDetailsTaskListTaskDetails">
+        <item name="fontPath">@string/font.regular</item>
+        <item name="android:textColor">@color/notion_mediumish_grey</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <!-- Sensors List -->
+    <style name="SensorListItemSensorName">
+        <item name="fontPath">@string/font.regular</item>
+        <item name="android:textColor">@color/notion_dark_grey</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+    <style name="SensorListItemSensorDetails">
+        <item name="fontPath">@string/font.regular</item>
+        <item name="android:textColor">@color/notion_mediumish_grey</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+    <style name="ButtonDescriptionText">
+        <item name="fontPath">@string/font.regular</item>
+        <item name="android:textColor">@color/notion_mediumish_grey</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <!-- Common Components/Paradigms -->
+    <style name="EmptyListPlaceholder">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/notion_mediumish_grey</item>
+        <item name="android:lineSpacingExtra">2sp</item>
+    </style>
+
+    <!-- Button for custom temperature selector -->
+    <style name="Notion.TemperatureSelectionButton">
+        <item name="android:textColor">@color/notion_teal</item>
+        <item name="android:textSize">28sp</item>
+        <item name="android:layout_width">@dimen/button_touch_target_width</item>
+        <item name="android:layout_height">@dimen/button_touch_target_height</item>
+    </style>
+</resources>
