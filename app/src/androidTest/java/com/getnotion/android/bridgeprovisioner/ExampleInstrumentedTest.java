@@ -1,4 +1,4 @@
-package android.getnotion.android.bridgeprovisioner;
+package com.getnotion.android.bridgeprovisioner;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

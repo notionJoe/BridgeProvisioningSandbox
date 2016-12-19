@@ -409,8 +409,10 @@ public class AddNewBridgeActivity extends AppCompatActivity implements SystemBri
             }
             case STATE_CREATE_SYSTEM: {
                 if (getIntent().getAction().equals(ACTION_CREATE_SYSTEM)) {
+                    Log.d("***DEBUG***", "StateMachine: STATE_CREATE_SYSTEM: creating system NOT CREATING BRIDGE");
                     createSystemAndBaseStation();
                 } else if (getIntent().getAction().equals(ACTION_ADD_BRIDGE)) {
+                    Log.d("***DEBUG***", "StateMachine: STATE_CREATE_SYSTEM: creating bridge NOT CREATING SYSTEM");
                     createBridge();
                 }
                 break;
@@ -663,6 +665,13 @@ public class AddNewBridgeActivity extends AppCompatActivity implements SystemBri
                                 }
 
                                );
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        LocalBroadcastManager.getInstance(this).unregisterReceiver(provisionBridgeBroadcastReceiver);
+        networkField.unregisterWifiScanBroadcastReceiver();
     }
 
     /**

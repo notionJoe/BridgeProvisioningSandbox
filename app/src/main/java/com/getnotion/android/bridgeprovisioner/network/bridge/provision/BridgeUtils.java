@@ -80,7 +80,7 @@ public class BridgeUtils {
             e.printStackTrace();
         } finally {
             if(response != null) {
-                response.close();
+                response.body().close();
             }
         }
         return false;
@@ -125,27 +125,11 @@ public class BridgeUtils {
             e.printStackTrace();
         } finally {
             if(response != null) {
-                response.close();
+                response.body().close();
             }
         }
         return secureSessionExists;
     }
-
-    /**
-     * @param bs NotionBridge with valid hardwareId
-     * @return ideally returns last 8 digits of hardwareId
-     */
-    public static String getShortHardwareId(NotionBridge bs) {
-        String id = bs.getHardwareId();
-        if (bs == null || id.length() == 0) {
-            return "";
-        }
-        if (id.length() <= SHORT_HARDWARE_ID_LENGTH) {
-            return id;
-        }
-        return id.substring(id.length() - SHORT_HARDWARE_ID_LENGTH, id.length());
-    }
-
 
     /**
      * Gets the appropriate user facing error message for the response code returned when attempting

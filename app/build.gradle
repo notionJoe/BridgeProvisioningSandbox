@@ -5,6 +5,7 @@ buildscript {
     }
     dependencies {
         classpath 'me.tatarka:gradle-retrolambda:3.3.1'
+        classpath 'com.facebook.testing.screenshot:plugin:0.4.2'
     }
 }
 
@@ -15,6 +16,7 @@ repositories {
 
 apply plugin: 'com.android.application'
 apply plugin: 'me.tatarka.retrolambda'
+apply plugin: 'com.facebook.testing.screenshot'
 
 android {
     compileSdkVersion 23
@@ -82,9 +84,22 @@ dependencies {
 
 
     testCompile 'junit:junit:4.12'
+
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
+
+    androidTestCompile ('com.android.support.test:runner:0.5') {
+        exclude module: 'support-annotations'
+    }
+
+    androidTestCompile ('com.android.support.test:rules:0.5') {
+        exclude module: 'support-annotations'
+    }
+
+    androidTestCompile ('com.android.support.test.espresso:espresso-idling-resource:2.2.2') {
+        exclude module: 'support-annotations'
+    }
 
     dependencies {
         debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5'

@@ -10,7 +10,9 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
+
 import com.getnotion.android.bridgeprovisioner.NetworkUtils;
+
 import android.getnotion.android.bridgeprovisioner.R;
 import android.graphics.PorterDuff;
 import android.net.Uri;
@@ -57,7 +59,6 @@ public class SystemNetworkField extends ViewFlipper {
     @Bind(R.id.systemNetworkFieldPasswordTextView)
     TextView passwordTextView;
 
-
     // Details/expanded view
     @Bind(R.id.systemNetworkFieldPasswordLabelTextView)
     TextView systemNetworkFieldPasswordLabelTextView;
@@ -76,7 +77,6 @@ public class SystemNetworkField extends ViewFlipper {
     TextView editIcon;
     @Bind(R.id.eyeIcon)
     TextView eyeIcon;
-
 
     @BindColor(R.color.notion_dark_teal)
     int notionDarkTeal;
@@ -113,7 +113,7 @@ public class SystemNetworkField extends ViewFlipper {
     private WifiManager wifiManager;
     private ScanResult bridgeScanResult;
     private List<ScanResult> scanResults = new ArrayList<>();
-    private BroadcastReceiver wifiScanResultsBR;
+    private BroadcastReceiver wifiScanResultsBroadcastReceiver;
 
     private boolean isPasswordVisible = false;
     private boolean isSearchingForNetwork = false;
@@ -135,25 +135,22 @@ public class SystemNetworkField extends ViewFlipper {
 
         // Submit once password is entered
         //TODO: Submit on network selection if network is open
-        passwordEditText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-            @Override
-            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                if (actionId == EditorInfo.IME_ACTION_DONE) {
-                    // Validation
-                    if (TextUtils.isEmpty(passwordEditText.getText().toString())) {
-                        passwordErrorTextView.setVisibility(View.VISIBLE);
-                        // Update field styles
-                        passwordEditText.getBackground().setColorFilter(getResources().getColor(R.color.notion_red), PorterDuff.Mode.SRC_ATOP);
-                        passwordEditText.requestFocus();
-                        return true;
-                    }
-                    collapseField();
-                    if (onNetworkSubmittedListener != null) {
-                        onNetworkSubmittedListener.onNetworkSubmitted();
-                    }
+        passwordEditText.setOnEditorActionListener((v, actionId, event) -> {
+            if (actionId == EditorInfo.IME_ACTION_DONE) {
+                // Validation
+                if (TextUtils.isEmpty(passwordEditText.getText().toString())) {
+                    passwordErrorTextView.setVisibility(View.VISIBLE);
+                    // Update field styles
+                    passwordEditText.getBackground().setColorFilter(getResources().getColor(R.color.notion_red), PorterDuff.Mode.SRC_ATOP);
+                    passwordEditText.requestFocus();
+                    return true;
                 }
-                return false;
+                collapseField();
+                if (onNetworkSubmittedListener != null) {
+                    onNetworkSubmittedListener.onNetworkSubmitted();
+                }
             }
+            return false;
         });
 
         passwordEditText.addTextChangedListener(new TextWatcher() {
@@ -195,10 +192,14 @@ public class SystemNetworkField extends ViewFlipper {
     protected void onDetachedFromWindow() {
         super.onDetachedFromWindow();
 
-        if (isSearchingForNetwork && wifiScanResultsBR != null) {
-            getContext().unregisterReceiver(wifiScanResultsBR);
-            wifiScanResultsBR = null;
+        if (isSearchingForNetwork && wifiScanResultsBroadcastReceiver != null) {
+            unregisterWifiScanBroadcastReceiver();
+            wifiScanResultsBroadcastReceiver = null;
         }
+    }
+
+    public void unregisterWifiScanBroadcastReceiver() {
+        getContext().unregisterReceiver(wifiScanResultsBroadcastReceiver);
     }
 
     public void setOnNetworkValidationChangedListener(OnNetworkValidationChangedListener onNetworkValidationChangedListener) {
@@ -221,7 +222,7 @@ public class SystemNetworkField extends ViewFlipper {
      */
     public void searchForNetwork() {
         // Search in progress -- calm down already!
-        if (isSearchingForNetwork && wifiScanResultsBR != null) {
+        if (isSearchingForNetwork && wifiScanResultsBroadcastReceiver != null) {
             return;
         }
 
@@ -241,7 +242,7 @@ public class SystemNetworkField extends ViewFlipper {
         }
 
         // Change to searching for bridge view
-//        showSearchingForBridgeView(); //TODO: SHow scanning text
+        //        showSearchingForBridgeView(); //TODO: SHow scanning text
 
         // register the BR
         registerWifiScanResultsReceiver();
@@ -249,18 +250,22 @@ public class SystemNetworkField extends ViewFlipper {
     }
 
     private void registerWifiScanResultsReceiver() {
-        if (wifiScanResultsBR != null) return;
+        if (wifiScanResultsBroadcastReceiver != null) {
+            return;
+        }
+
         // Register the scan results BroadcastReceiver and then kick off a scan in the background
-        wifiScanResultsBR = new BroadcastReceiver() {
+        wifiScanResultsBroadcastReceiver = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
                 scanResults = NetworkUtils.filterOutBridgeNetworks(
                         NetworkUtils.filterOutEmptyNetworks(
                                 NetworkUtils.filterOut5GNetworks(
                                         wifiManager.getScanResults())));
+                isSearchingForNetwork = false;
             }
         };
-        getContext().registerReceiver(wifiScanResultsBR, new IntentFilter(WifiManager.SCAN_RESULTS_AVAILABLE_ACTION));
+        getContext().registerReceiver(wifiScanResultsBroadcastReceiver, new IntentFilter(WifiManager.SCAN_RESULTS_AVAILABLE_ACTION));
     }
 
     public void collapseField() {
@@ -280,16 +285,17 @@ public class SystemNetworkField extends ViewFlipper {
 
     public void editField() {
         setDisplayedChild(0);
-        if (currentNetworkScanResult != null && !currentNetworkScanResult.SSID.isEmpty() && !currentNetworkScanResult.SSID.equals("<unknown ssid>")) {
+        if (currentNetworkScanResult != null && !currentNetworkScanResult.SSID.isEmpty() && !currentNetworkScanResult.SSID.equals(
+                "<unknown ssid>")) {
             passwordEditText.requestFocus();
-            ((InputMethodManager) getContext().getSystemService(Context.INPUT_METHOD_SERVICE)).showSoftInput(passwordEditText, InputMethodManager.SHOW_IMPLICIT);
+            ((InputMethodManager) getContext().getSystemService(Context.INPUT_METHOD_SERVICE)).showSoftInput(passwordEditText,
+                                                                                                             InputMethodManager.SHOW_IMPLICIT);
         } else {
             passwordTextView.setVisibility(GONE);
             passwordEditText.setVisibility(GONE);
         }
 
     }
-
 
     public ScanResult getSelectedScanResult() {
         return currentNetworkScanResult;
@@ -314,16 +320,12 @@ public class SystemNetworkField extends ViewFlipper {
         String capabilities = currentNetworkScanResult.capabilities;
 
         // Security check
-        if (capabilities.contains("WPA/WPA2") || capabilities.contains("WPA2") || capabilities.contains("WPA") || capabilities.contains("WEP")) {
+        if (capabilities.contains("WPA/WPA2") || capabilities.contains("WPA2") || capabilities.contains("WPA") || capabilities.contains(
+                "WEP")) {
             passwordTextView.setVisibility(VISIBLE);
             systemNetworkFieldPasswordLabelTextView.setVisibility(VISIBLE);
             passwordContainer.setVisibility(VISIBLE);
-            this.postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    showSoftKeyboard();
-                }
-            }, 100);
+            this.postDelayed(() -> showSoftKeyboard(), 100);
         } else {
             passwordTextView.setVisibility(GONE);
             systemNetworkFieldPasswordLabelTextView.setVisibility(GONE);
@@ -331,15 +333,16 @@ public class SystemNetworkField extends ViewFlipper {
             passwordEditText.setText("");
         }
         // If need to filter on any security...not just those supported by the bridge, use this:
-//        String[] securityModes = {"WEP", "PSK", "EAP"};
-//        for (int i = securityModes.length - 1; i >= 0; i--) {
-//            if (capabilities.contains(securityModes[i])) {
-//                return securityModes[i];
-//            }
-//        }
+        //        String[] securityModes = {"WEP", "PSK", "EAP"};
+        //        for (int i = securityModes.length - 1; i >= 0; i--) {
+        //            if (capabilities.contains(securityModes[i])) {
+        //                return securityModes[i];
+        //            }
+        //        }
 
         networkTextView.setText(currentNetworkScanResult.SSID);
         networkChooserTextView.setText(currentNetworkScanResult.SSID);
+        isSearchingForNetwork = false;
     }
 
     private void setSelectNetworkView() {
@@ -374,7 +377,7 @@ public class SystemNetworkField extends ViewFlipper {
     }
 
     public boolean isWep() {
-        if (currentNetworkScanResult  == null) {
+        if (currentNetworkScanResult == null) {
             return false;
         }
         return NetworkUtils.getSecurityType(currentNetworkScanResult) == NetworkUtils.SECURITY_WEP;
@@ -445,16 +448,15 @@ public class SystemNetworkField extends ViewFlipper {
 
         new AlertDialog.Builder(getContext())
                 .setTitle(selectNetworkString)
-                .setItems(networkNames.toArray(new CharSequence[networkNames.size()]), new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        setCurrentNetworkScanResult(scanResults.get(which));
-                    }
-                })
+                .setItems(networkNames.toArray(new CharSequence[networkNames.size()]),
+                          (dialog, which) -> setCurrentNetworkScanResult(scanResults.get(which)))
                 .create()
                 .show();
     }
 
+    public boolean isSearchingForNetwork() {
+        return isSearchingForNetwork;
+    }
 
     private void showWepWarning() {
         new SlideUpDialog.Builder()

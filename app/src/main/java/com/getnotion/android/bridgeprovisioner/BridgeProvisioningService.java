@@ -30,8 +30,11 @@ import android.os.Message;
 import android.os.Process;
 import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
+import android.widget.Toast;
 
 
+import java.util.Iterator;
+import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
@@ -154,6 +157,7 @@ public class BridgeProvisioningService extends Service implements IProvisioningS
         public void handleMessage(final Message msg) {
             switch (CURRENT_STATE) {
                 case CONNECTING:
+                    determineInitialWifiState();
                     connectToBridge();
                     break;
                 case PROVISIONING_INSECURE:
@@ -166,6 +170,26 @@ public class BridgeProvisioningService extends Service implements IProvisioningS
                     disconnectFromBridge();
                     break;
             }
+        }
+    }
+
+    private void determineInitialWifiState() {
+        enableWifi();
+        removeBridgeFromConfiguredNetworks();
+    }
+
+    private void removeBridgeFromConfiguredNetworks() {
+        for (WifiConfiguration configuredNetwork : wifiManager.getConfiguredNetworks()) {
+            if (configuredNetwork.SSID.equals("\"" + bridgeConfig.getBridgeSSID() + "\"")) {
+                wifiManager.removeNetwork(configuredNetwork.networkId);
+                wifiManager.saveConfiguration();
+            }
+        }
+    }
+
+    private void enableWifi() {
+        if (wifiManager.getWifiState() != WifiManager.WIFI_STATE_ENABLED) {
+            wifiManager.setWifiEnabled(true);
         }
     }
 
@@ -234,6 +258,7 @@ public class BridgeProvisioningService extends Service implements IProvisioningS
                     } catch (Exception e) {
                         Log.e(TAG, "Error un-registering receiver on failure to connect to bridge", e);
                     } finally {
+                        countDownTimer = null;
                         updateState(CONNECTING);
                     }
                 }
@@ -317,7 +342,7 @@ public class BridgeProvisioningService extends Service implements IProvisioningS
         broadcastMessage("Configuring Bridge...");
 
         bridgeProvisioner = BridgeProvisioner.getInstance();
-        bridgeProvisioner.provisionBridge(this, provisionSecurely, this, bridgeConfig, (successful, authFailure, message1) -> {
+        bridgeProvisioner.provisionBridge(this, provisionSecurely, this, bridgeConfig, (successful, authFailure, message) -> {
             wasSuccessful = successful;
             wasAuthFailure = authFailure;
             //            if(countDownTimer != null) {
@@ -333,6 +358,7 @@ public class BridgeProvisioningService extends Service implements IProvisioningS
 
             @Override
             public void onFinish() {
+                countDownTimer = null;
                 if (wasSuccessful) {
                     Log.d(TAG, "Bridge provisioned!");
                     broadcastMessage("Bridge provisioned!");
@@ -365,11 +391,14 @@ public class BridgeProvisioningService extends Service implements IProvisioningS
         countDownTimer = new CountDownTimer(10000, 2000) {
             @Override
             public void onTick(long millisUntilFinished) {
-                wifiManager.reconnect();
+                if(isConnectedToWifi()) {
+                    countDownTimer.onFinish();
+                }
             }
 
             @Override
             public void onFinish() {
+                countDownTimer = null;
                 int resultState;
                 if (isConnectedToBridge()) {
                     Log.d(TAG, "Failed to disconnect from Bridge...");
@@ -432,8 +461,7 @@ public class BridgeProvisioningService extends Service implements IProvisioningS
         NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
         WifiInfo wifiInfo = wifiManager.getConnectionInfo();
         if (networkInfo != null && networkInfo.isConnected()) {
-            if (wifiInfo.getSSID().equals(bridgeConfig.getNetworkSSID())) {
-                Log.d("***DEBUG***", "isConnectedToBridge: connected to original wifi... disconnecting");
+            if (wifiInfo.getSSID().equals("\"" + bridgeConfig.getNetworkSSID() + "\"")) {
                 return true;
             }
         }
