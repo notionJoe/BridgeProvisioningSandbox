@@ -70,6 +70,7 @@ public class BridgeProvisioningService extends Service implements IProvisioningS
 
     private Looper serviceLooper;
     private ServiceHandler serviceHandler;
+    private ConnectivityManager connectivityManager;
 
     private AtomicBoolean receiverRegistered = new AtomicBoolean(false);
     private BridgeProvisioner bridgeProvisioner;
@@ -85,6 +86,7 @@ public class BridgeProvisioningService extends Service implements IProvisioningS
         serviceLooper = thread.getLooper();
         serviceHandler = new ServiceHandler(serviceLooper);
         wifiManager = (WifiManager) getSystemService(WIFI_SERVICE);
+        connectivityManager = (ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE);
     }
 
     @Override
@@ -124,6 +126,7 @@ public class BridgeProvisioningService extends Service implements IProvisioningS
         serviceLooper = null;
         serviceHandler = null;
         wifiManager = null;
+        connectivityManager = null;
         bridgeConfig = null;
         connectionReceiver = null;
         bridgeProvisioner = null;
@@ -275,13 +278,12 @@ public class BridgeProvisioningService extends Service implements IProvisioningS
         // calls aren't relayed through a network configuration w/ internet access -- see docs for
         // {WifiManager#enabledNetwork}
 
-        final ConnectivityManager cm = (ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                 Log.d(TAG, "SDK >= Marshmallow -- Binding process to network");
                 NetworkRequest.Builder req = new NetworkRequest.Builder();
                 req.addTransportType(NetworkCapabilities.TRANSPORT_WIFI);
-                cm.requestNetwork(req.build(), new ConnectivityManager.NetworkCallback() {
+                connectivityManager.requestNetwork(req.build(), new ConnectivityManager.NetworkCallback() {
                     @SuppressLint("NewApi")
                     @Override
                     public void onAvailable(Network network) {
@@ -314,7 +316,9 @@ public class BridgeProvisioningService extends Service implements IProvisioningS
         bridgeProvisioner.provisionBridge(this, provisionSecurely, this, bridgeConfig, (successful, authFailure, message1) -> {
             wasSuccessful = successful;
             wasAuthFailure = authFailure;
-            countDownTimer.cancel();
+            //            if(countDownTimer != null) {
+            //            countDownTimer.onFinish();
+            //            }
             countDownTimer.onFinish();
         });
         countDownTimer = new CountDownTimer(60000, 3000) {
@@ -410,8 +414,7 @@ public class BridgeProvisioningService extends Service implements IProvisioningS
     }
 
     private boolean isConnectedToBridge() {
-        ConnectivityManager cm = (ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE);
-        NetworkInfo networkInfo = cm.getActiveNetworkInfo();
+        NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
         WifiInfo wifiInfo = wifiManager.getConnectionInfo();
         if (networkInfo != null && networkInfo.isConnected()) {
             if (wifiInfo.getSSID().replace("\"", "").equals(bridgeConfig.getBridgeSSID())) {
@@ -422,8 +425,7 @@ public class BridgeProvisioningService extends Service implements IProvisioningS
     }
 
     private boolean isConnectedToWifi() {
-        ConnectivityManager cm = (ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE);
-        NetworkInfo networkInfo = cm.getActiveNetworkInfo();
+        NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
         WifiInfo wifiInfo = wifiManager.getConnectionInfo();
         if (networkInfo != null && networkInfo.isConnected()) {
             if (wifiInfo.getSSID().equals(bridgeConfig.getNetworkSSID())) {
