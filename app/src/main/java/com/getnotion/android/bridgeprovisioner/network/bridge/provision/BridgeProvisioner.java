@@ -42,7 +42,7 @@ public class BridgeProvisioner {
     private OkHttpClient httpClient;
 
     private AsyncTask<String, Void, Boolean> provisioningAsyncTask;
-    // Singleton
+
     private static BridgeProvisioner ourInstance = new BridgeProvisioner();
 
     private BridgeProvisioner() {
@@ -58,6 +58,10 @@ public class BridgeProvisioner {
                 .connectTimeout(BridgeConstants.MetaData.CONNECTION_TIMEOUT, TimeUnit.SECONDS)
                 .readTimeout(BridgeConstants.MetaData.READ_TIMEOUT, TimeUnit.SECONDS)
                 .writeTimeout(BridgeConstants.MetaData.WRITE_TIMEOUT, TimeUnit.SECONDS);
+    }
+
+    public void tearDown() {
+        provisioningAsyncTask = null;
     }
 
     /**

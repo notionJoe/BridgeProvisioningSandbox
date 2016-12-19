@@ -6,10 +6,12 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+
 import com.getnotion.android.bridgeprovisioner.network.bridge.provision.BridgeConstants;
 import com.getnotion.android.bridgeprovisioner.network.bridge.provision.IProvisioningStatusListener;
 import com.getnotion.android.bridgeprovisioner.network.bridge.provision.BridgeConfig;
 import com.getnotion.android.bridgeprovisioner.network.bridge.provision.BridgeProvisioner;
+
 import android.net.ConnectivityManager;
 import android.net.Network;
 import android.net.NetworkCapabilities;
@@ -129,6 +131,8 @@ public class BridgeProvisioningService extends Service implements IProvisioningS
         connectivityManager = null;
         bridgeConfig = null;
         connectionReceiver = null;
+
+        bridgeProvisioner.tearDown();
         bridgeProvisioner = null;
 
         if (countDownTimer != null) {
