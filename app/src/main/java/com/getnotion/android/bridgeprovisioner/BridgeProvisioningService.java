@@ -68,8 +68,8 @@ public class BridgeProvisioningService extends Service implements IProvisioningS
     private boolean wasSuccessful = false;
     private boolean wasAuthFailure = false;
 
-    private Looper mServiceLooper;
-    private ServiceHandler mServiceHandler;
+    private Looper serviceLooper;
+    private ServiceHandler serviceHandler;
 
     private AtomicBoolean receiverRegistered = new AtomicBoolean(false);
     private BridgeProvisioner bridgeProvisioner;
@@ -82,8 +82,8 @@ public class BridgeProvisioningService extends Service implements IProvisioningS
         thread.start();
 
         // Grab the threads looper to use for our handler
-        mServiceLooper = thread.getLooper();
-        mServiceHandler = new ServiceHandler(mServiceLooper);
+        serviceLooper = thread.getLooper();
+        serviceHandler = new ServiceHandler(serviceLooper);
         wifiManager = (WifiManager) getSystemService(WIFI_SERVICE);
     }
 
@@ -97,9 +97,9 @@ public class BridgeProvisioningService extends Service implements IProvisioningS
         }
         if (bridgeConfig != null && bridgeConfig.isValid()) {
             // Be sure to send id w/ message so we know which to stop
-            Message msg = mServiceHandler.obtainMessage();
+            Message msg = serviceHandler.obtainMessage();
             msg.arg1 = startId;
-            mServiceHandler.sendMessage(msg);
+            serviceHandler.sendMessage(msg);
         } else {
             Log.d(TAG, "Service started with invalid build config");
             Log.d(TAG, "Stopping service...");
@@ -121,8 +121,8 @@ public class BridgeProvisioningService extends Service implements IProvisioningS
         NotionBridgeProvisionerApplication.getRefWatcher(this).watch(this);
 
         CURRENT_STATE = CONNECTING;
-        mServiceLooper = null;
-        mServiceHandler = null;
+        serviceLooper = null;
+        serviceHandler = null;
         wifiManager = null;
         bridgeConfig = null;
         connectionReceiver = null;
@@ -299,8 +299,8 @@ public class BridgeProvisioningService extends Service implements IProvisioningS
 
         // Switch to provisioning
         updateState(PROVISIONING_SECURE);
-        Message msg = mServiceHandler.obtainMessage();
-        mServiceHandler.handleMessage(msg);
+        Message msg = serviceHandler.obtainMessage();
+        serviceHandler.handleMessage(msg);
     }
 
     /**
@@ -337,9 +337,9 @@ public class BridgeProvisioningService extends Service implements IProvisioningS
                     broadcastMessage("Bridge provisioning failed.");
                     updateState(DISCONNECTING);
                 }
-                if(mServiceHandler != null) {
-                    Message msg = mServiceHandler.obtainMessage();
-                    mServiceHandler.handleMessage(msg);
+                if (serviceHandler != null) {
+                    Message msg = serviceHandler.obtainMessage();
+                    serviceHandler.handleMessage(msg);
                 }
             }
         };
