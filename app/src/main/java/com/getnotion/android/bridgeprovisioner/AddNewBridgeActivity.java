@@ -619,7 +619,7 @@ public class AddNewBridgeActivity extends AppCompatActivity implements SystemBri
         updateFooterButton();
 
         NotionBridge bridge = new NotionBridge(
-                bridgeField.getBridgeHardwareId(), -9999);
+                bridgeField.getBridgeHardwareId(), 392);
 
         RestClient.notionApi()
                   .createBridge(new BridgeRequest(bridge),
