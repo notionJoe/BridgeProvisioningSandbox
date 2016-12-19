@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Notion</string>
+    <string name="app_name">Bridge Provisioner</string>
 
     <!-- ProjectNumber for the 'notion-android' ProjectID  -->
     <string name="project_number">456108706179</string>

@@ -5,6 +5,9 @@ import android.getnotion.android.bridgeprovisioner.R;
 import android.os.Build;
 import android.util.Log;
 
+import com.joanzapata.iconify.Iconify;
+import com.joanzapata.iconify.fonts.FontAwesomeModule;
+
 import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
 
 public class NotionBridgeProvisionerApplication extends Application{
@@ -31,5 +34,6 @@ public class NotionBridgeProvisionerApplication extends Application{
             e.printStackTrace();
         }
 
+        Iconify.with(new FontAwesomeModule());
     }
 }
