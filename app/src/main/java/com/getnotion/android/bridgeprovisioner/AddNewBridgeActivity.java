@@ -9,45 +9,40 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.getnotion.android.bridgeprovisioner.R;
+import android.location.Location;
+import android.location.LocationManager;
+import android.net.Uri;
+import android.os.Build;
+import android.os.Bundle;
+import android.provider.Settings;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.LocalBroadcastManager;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.util.Log;
+import android.view.View;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
+import android.widget.ProgressBar;
+import android.widget.ScrollView;
+import android.widget.Toast;
 
 import com.getnotion.android.bridgeprovisioner.models.NotionBridge;
 import com.getnotion.android.bridgeprovisioner.models.NotionSystem;
 import com.getnotion.android.bridgeprovisioner.models.wrappers.BridgePostResponse;
 import com.getnotion.android.bridgeprovisioner.models.wrappers.BridgeRequest;
 import com.getnotion.android.bridgeprovisioner.network.RestClient;
+import com.getnotion.android.bridgeprovisioner.network.bridge.provision.BridgeConfig;
 import com.getnotion.android.bridgeprovisioner.network.bridge.provision.BridgeConstants;
 import com.getnotion.android.bridgeprovisioner.network.bridge.provision.BridgeUtils;
-import com.getnotion.android.bridgeprovisioner.network.bridge.provision.BridgeConfig;
 import com.getnotion.android.bridgeprovisioner.utils.SystemUtils;
 import com.getnotion.android.bridgeprovisioner.views.CollapsibleField;
 import com.getnotion.android.bridgeprovisioner.views.PermissionsField;
 import com.getnotion.android.bridgeprovisioner.views.SlideUpDialog;
-import com.getnotion.android.bridgeprovisioner.views.SlideUpDialogHelper;
 import com.getnotion.android.bridgeprovisioner.views.SuccessDialogFragment;
 import com.getnotion.android.bridgeprovisioner.views.SystemBridgeField;
 import com.getnotion.android.bridgeprovisioner.views.SystemNameField;
 import com.getnotion.android.bridgeprovisioner.views.SystemNetworkField;
-import android.location.Location;
-import android.location.LocationManager;
-import android.net.Uri;
-import android.os.Build;
-import android.provider.Settings;
-import android.support.annotation.NonNull;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
-import android.support.v4.content.LocalBroadcastManager;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
-import android.util.Log;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.Button;
-import android.widget.CompoundButton;
-import android.widget.ProgressBar;
-import android.widget.ScrollView;
-import android.widget.Toast;
 
 import java.util.TimeZone;
 
@@ -60,11 +55,10 @@ import io.realm.Realm;
 import retrofit.Callback;
 import retrofit.RetrofitError;
 
-public class AddNewBridgeActivity extends AppCompatActivity implements
-        SystemBridgeField.OnBridgeSelectedListener,
-        SystemBridgeField.OnBridgeNotFoundListener,
-        SystemNetworkField.OnNetworkSubmittedListener,
-        SystemNetworkField.OnNetworkValidationChangedListener {
+public class AddNewBridgeActivity extends AppCompatActivity implements SystemBridgeField.OnBridgeSelectedListener,
+                                                                       SystemBridgeField.OnBridgeNotFoundListener,
+                                                                       SystemNetworkField.OnNetworkSubmittedListener,
+                                                                       SystemNetworkField.OnNetworkValidationChangedListener {
 
     private static final String TAG = AddNewBridgeActivity.class.getSimpleName();
 
@@ -268,34 +262,24 @@ public class AddNewBridgeActivity extends AppCompatActivity implements
      */
     private void attachListeners() {
         // Attach listener for when the SystemName is submitted
-        systemNameField.setOnFieldSubmittedListener(new CollapsibleField.OnFieldSubmittedListener() {
-            @Override
-            public void onFieldSubmitted(CollapsibleField collapsibleField) {
-                processState();
-            }
-        });
+        systemNameField.setOnFieldSubmittedListener(collapsibleField -> processState());
 
         // Ask for permission once location permission switch is checked
-        permissionsField.setLocationPermissionOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked) {
-                    checkForLocationPermissions();
-                }
-                setFooterButtonEnabled(permissionsField.getPermissionsEnabled());
+        permissionsField.setLocationPermissionOnCheckedChangeListener((buttonView, isChecked) -> {
+            if (isChecked) {
+                LocationPermissionsHelper.checkForLocationPermissions(this, hasCheckedForPermissions);
+                hasCheckedForPermissions = true;
             }
+            setFooterButtonEnabled(permissionsField.getPermissionsEnabled());
         });
 
         // This field is only visible if version is 6.0.0 -- see permissionsField
-        permissionsField.setWriteSettingsPermissionsOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
-                    Intent writeSettingsIntent = new Intent(Settings.ACTION_MANAGE_WRITE_SETTINGS);
-                    writeSettingsIntent.setData(Uri.parse("package:" + getPackageName()));
-                    startActivityForResult(writeSettingsIntent, WRITE_SETTINGS_PERMISSIONS_REQUEST);
-                    // See onActivityResult() for footer button update
-                }
+        permissionsField.setWriteSettingsPermissionsOnCheckedChangeListener((buttonView, isChecked) -> {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                Intent writeSettingsIntent = new Intent(Settings.ACTION_MANAGE_WRITE_SETTINGS);
+                writeSettingsIntent.setData(Uri.parse("package:" + getPackageName()));
+                startActivityForResult(writeSettingsIntent, WRITE_SETTINGS_PERMISSIONS_REQUEST);
+                // See onActivityResult() for footer button update
             }
         });
 
@@ -308,12 +292,7 @@ public class AddNewBridgeActivity extends AppCompatActivity implements
         networkField.setOnNetworkSubmittedListener(this);
 
         // Configure busyOverlay to consume all touch events
-        busyOverlay.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                return true;
-            }
-        });
+        busyOverlay.setOnTouchListener((v, event) -> true);
     }
 
     /**
@@ -344,7 +323,7 @@ public class AddNewBridgeActivity extends AppCompatActivity implements
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                     permissionsField.setVisibility(View.VISIBLE);
                     // If permissions are already enabled collapse the field and move on
-                    if (!arePermissionsEnabled()) {
+                    if (!LocationPermissionsHelper.arePermissionsEnabled(this)) {
                         currentState = STATE_ENABLE_PERMISSIONS;
                     } else {
                         onFieldSubmitted(permissionsField);
@@ -364,7 +343,7 @@ public class AddNewBridgeActivity extends AppCompatActivity implements
             case STATE_ENABLE_PERMISSIONS: {
                 // One last permissions check in case something was disabled in the background
                 // User a SettingContentObserver for a more robust solution: http://stackoverflow.com/a/7017516
-                if (!arePermissionsEnabled()) {
+                if (!LocationPermissionsHelper.arePermissionsEnabled(this)) {
                     Toast.makeText(AddNewBridgeActivity.this, "Permissions must be enabled to continue.", Toast.LENGTH_SHORT).show();
                     break;
                 }
@@ -432,7 +411,7 @@ public class AddNewBridgeActivity extends AppCompatActivity implements
                 if (getIntent().getAction().equals(ACTION_CREATE_SYSTEM)) {
                     createSystemAndBaseStation();
                 } else if (getIntent().getAction().equals(ACTION_ADD_BRIDGE)) {
-                    createBaseStation();
+                    createBridge();
                 }
                 break;
             }
@@ -579,21 +558,15 @@ public class AddNewBridgeActivity extends AppCompatActivity implements
         provisionBridgeServiceIntent.putExtra(BridgeProvisioningService.BRIDGE_CONFIG, bridgeConfig);
         startService(provisionBridgeServiceIntent);
 
-//        if (bridgeProvisioningFailed) {
-//            NotionAnalytics.getInstance().bridgeProvisioningRetry(AddNewBridgeActivity.this);
-//        }
-
-        // Register receiver which will handle all interaction going forward
-        registerProvisionBridgeBR();
+        registerProvisionBridgeBroadcastReceiver();
     }
 
     private void createSystemAndBaseStation() {
         currentState = STATE_CREATING_SYSTEM;
         updateFooterButton();
 
-        // System already added and baseStation failed to add
         if (systemAdded) {
-            createBaseStation();
+            createBridge();
             return;
         }
 
@@ -608,8 +581,6 @@ public class AddNewBridgeActivity extends AppCompatActivity implements
                                 new Callback<NotionSystem.SystemPOSTResponse>() {
                                     @Override
                                     public void success(NotionSystem.SystemPOSTResponse systemPOSTResponse, retrofit.client.Response response) {
-//                                        NotionAnalytics.getInstance().resourceCreated(AddNewBridgeActivity.this, NotionAnalytics.SYSTEM);
-
                                         systemAdded = true;
 
                                         // Persist account to local cache
@@ -619,14 +590,7 @@ public class AddNewBridgeActivity extends AppCompatActivity implements
                                         realm.commitTransaction();
                                         realm.close();
 
-                                        // Set the selected systemId
-                                        //                                        AppData.getInstance().setSelectedSystem(systemResponse.getSystems().getId());
-
-                                        // AMS is supposed to be turned on by default for new systems this adds the geofence
-                                        //                                        AppData.getInstance().enableAutomaticModeSwitching(true);
-
-                                        // Create baseStation next
-                                        createBaseStation();
+                                        createBridge();
                                     }
 
                                     @Override
@@ -650,7 +614,7 @@ public class AddNewBridgeActivity extends AppCompatActivity implements
                                 });
     }
 
-    private void createBaseStation() {
+    private void createBridge() {
         currentState = STATE_CREATING_SYSTEM;
         updateFooterButton();
 
@@ -660,51 +624,43 @@ public class AddNewBridgeActivity extends AppCompatActivity implements
         RestClient.notionApi()
                   .createBridge(new BridgeRequest(bridge),
                                 new Callback<BridgePostResponse>() {
-                                         @Override
-                                         public void success(BridgePostResponse bridgePostResponse, retrofit.client.Response response) {
-                                             // Persist base_station to local cache
-                                             Realm realm = Realm.getDefaultInstance();
-                                             realm.beginTransaction();
-                                             realm.copyToRealmOrUpdate(bridgePostResponse.getBridge());
-                                             realm.commitTransaction();
-                                             realm.close();
+                                    @Override
+                                    public void success(BridgePostResponse bridgePostResponse, retrofit.client.Response response) {
+                                        // Persist base_station to local cache
+                                        Realm realm = Realm.getDefaultInstance();
+                                        realm.beginTransaction();
+                                        realm.copyToRealmOrUpdate(bridgePostResponse.getBridge());
+                                        realm.commitTransaction();
+                                        realm.close();
 
-                                             if (getIntent().getAction().equals(ACTION_CREATE_SYSTEM)) {
-//                                                 NotionAnalytics.getInstance().resourceCreated(AddNewBridgeActivity.this,
-//                                                                                               NotionAnalytics.BRIDGE);
+                                        if (getIntent().getAction().equals(ACTION_CREATE_SYSTEM)) {
+                                            setResult(RESULT_OK);
+                                            finish();
+                                        } else if (getIntent().getAction().equals(ACTION_ADD_BRIDGE)) {
+                                            showSuccessDialog(strSuccessAddedBridgeTitle, strSuccessAddedBridgeMessage);
+                                        }
+                                    }
 
-                                                 setResult(RESULT_OK);
-                                                 finish();
-                                                 // Success is still baked into InitialSetupActivity, uncomment when that gets cleaned up
-                                                 //showSuccessDialog(strSuccessCreatedSystemTitle, strSuccessCreatedSystemMessage);
-                                             } else if (getIntent().getAction().equals(ACTION_ADD_BRIDGE)) {
-//                                                 NotionAnalytics.getInstance().resourceCreated(AddNewBridgeActivity.this,
-//                                                                                               NotionAnalytics.ADDITIONAL_BRIDGE);
+                                    @Override
+                                    public void failure(RetrofitError error) {
+                                        currentState = AddNewBridgeActivity.STATE_CREATE_SYSTEM;
+                                        updateFooterButton();
+                                        setFooterButtonEnabled(true);
 
-                                                 showSuccessDialog(strSuccessAddedBridgeTitle, strSuccessAddedBridgeMessage);
-                                             }
-                                         }
+                                        // Get appropriate error message for response
+                                        String errorMessage = BridgeUtils
+                                                .getErrorMessageForResponse(AddNewBridgeActivity.this, error);
 
-                                         @Override
-                                         public void failure(RetrofitError error) {
-                                             currentState = AddNewBridgeActivity.STATE_CREATE_SYSTEM;
-                                             updateFooterButton();
-                                             setFooterButtonEnabled(true);
-
-                                             // Get appropriate error message for response
-                                             String errorMessage = BridgeUtils
-                                                     .getErrorMessageForResponse(AddNewBridgeActivity.this, error);
-
-                                             Log.e(TAG, error.getMessage());
-                                             new SlideUpDialog.OkBuilder()
-                                                     .colorTheme(SlideUpDialog.ColorTheme.RED)
-                                                     .title(AddNewBridgeActivity.this
-                                                                    .getString(R.string.dialogs_addingBridgeError_title))
-                                                     .message(errorMessage)
-                                                     .build(AddNewBridgeActivity.this)
-                                                     .show();
-                                         }
-                                     }
+                                        Log.e(TAG, error.getMessage());
+                                        new SlideUpDialog.OkBuilder()
+                                                .colorTheme(SlideUpDialog.ColorTheme.RED)
+                                                .title(AddNewBridgeActivity.this
+                                                               .getString(R.string.dialogs_addingBridgeError_title))
+                                                .message(errorMessage)
+                                                .build(AddNewBridgeActivity.this)
+                                                .show();
+                                    }
+                                }
 
                                );
     }
@@ -712,8 +668,7 @@ public class AddNewBridgeActivity extends AppCompatActivity implements
     /**
      * Set the local instance of the ProvisionBridgeBR and register it with the LocalBroadcastManager
      */
-
-    private void registerProvisionBridgeBR() {
+    private void registerProvisionBridgeBroadcastReceiver() {
         if (provisionBridgeBroadcastReceiver != null) {
             return;
         }
@@ -768,7 +723,6 @@ public class AddNewBridgeActivity extends AppCompatActivity implements
                         }
 
                         bridgeProvisioningFailed = true;
-//                        NotionAnalytics.getInstance().bridgeProvisioningFailed(AddNewBridgeActivity.this);
 
                         new SlideUpDialog.OkBuilder()
                                 .colorTheme(SlideUpDialog.ColorTheme.RED)
@@ -835,58 +789,6 @@ public class AddNewBridgeActivity extends AppCompatActivity implements
         }
     }
 
-    private boolean arePermissionsEnabled() {
-
-        boolean locationPermissionsEnabled = ContextCompat
-                .checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED;
-
-        // If on v6.0.0 must check Write Settings permissions -- see MOB-16
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M &&
-                Build.VERSION.RELEASE.startsWith("6.0") &&
-                !Build.VERSION.RELEASE.startsWith("6.0.")) {
-            return Settings.System.canWrite(this) && locationPermissionsEnabled;
-        }
-
-        return locationPermissionsEnabled;
-    }
-
-    /**
-     * Check for location permissions on the device
-     */
-    private void checkForLocationPermissions() {
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            //            if(ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.ACCESS_FINE_LOCATION) && !hasCheckedForPermissions) {
-            if (!hasCheckedForPermissions) {
-                hasCheckedForPermissions = true;
-                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION,
-                                                                     Manifest.permission.ACCESS_COARSE_LOCATION},
-                                                  NotionBridgeProvisionerApplication.PERMISSION_REQUEST_FINE_LOCATION);
-            }
-        } else {
-            // TODO: start scanning early?
-            //startScanningForBridge();
-            Log.d(TAG, "Permissions enabled already");
-        }
-    }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        switch (requestCode) {
-            case NotionBridgeProvisionerApplication.PERMISSION_REQUEST_FINE_LOCATION: {
-                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    // TODO: start scanning early?
-                    //startScanningForBridge();
-                } else { // denied
-                    SlideUpDialogHelper.showPermissionsRequiredDialog(this, Manifest.permission_group.LOCATION);
-                    finish();
-                }
-                break;
-            }
-        }
-    }
-    // </editor-fold>
-
-    //<editor-fold desc="Interfacing w/ CollapsibleField events">
     @Override
     public void onBridgeNotFound() {
         currentState = STATE_BRIDGE_NOT_FOUND;
@@ -913,6 +815,3 @@ public class AddNewBridgeActivity extends AppCompatActivity implements
         setFooterButtonEnabled(isValid);
     }
 }
-
-//</editor-fold>
-

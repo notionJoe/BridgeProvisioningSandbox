@@ -44,9 +44,7 @@ public class BridgeProvisioningService extends Service implements IProvisioningS
 
     private static final String TAG = BridgeProvisioningService.class.getSimpleName();
 
-
     public static final String BRIDGE_CONFIG = TAG + ".BRIDGE_CONFIG"; // Key for 'buildConfig' extra
-
     public static final String RESULT_BROADCAST = TAG + ".RESULT_BROADCAST"; // Intent action
     public static final String MESSAGE_BROADCAST = TAG + ".MESSAGE_BROADCAST";
     public static final String PROVISIONING_MESSAGE = TAG + ".STATUS_MESSAGE"; // Key for 'status' extra
