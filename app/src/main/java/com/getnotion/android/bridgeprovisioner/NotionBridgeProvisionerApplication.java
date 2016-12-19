@@ -1,12 +1,15 @@
 package com.getnotion.android.bridgeprovisioner;
 
 import android.app.Application;
+import android.content.Context;
 import android.getnotion.android.bridgeprovisioner.R;
 import android.os.Build;
 import android.util.Log;
 
 import com.joanzapata.iconify.Iconify;
 import com.joanzapata.iconify.fonts.FontAwesomeModule;
+import com.squareup.leakcanary.LeakCanary;
+import com.squareup.leakcanary.RefWatcher;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
 
@@ -19,9 +22,24 @@ public class NotionBridgeProvisionerApplication extends Application{
     public static final int PERMISSION_REQUEST_COARSE_LOCATION = 2;
     public static final int PERMISSION_REQUEST_CAMERA = 3;
 
+    private RefWatcher refWatcher;
+
+    public static RefWatcher getRefWatcher(Context context) {
+        NotionBridgeProvisionerApplication application = (NotionBridgeProvisionerApplication) context.getApplicationContext();
+        return application.refWatcher;
+    }
+
     @Override
     public void onCreate() {
         super.onCreate();
+
+        if (LeakCanary.isInAnalyzerProcess(this)) {
+            // This process is dedicated to LeakCanary for heap analysis.
+            // You should not init your app in this process.
+            return;
+        }
+        refWatcher = LeakCanary.install(this);
+
 
         try {
             CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()

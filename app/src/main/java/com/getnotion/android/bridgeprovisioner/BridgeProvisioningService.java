@@ -120,6 +120,8 @@ public class BridgeProvisioningService extends Service implements IProvisioningS
     public void onDestroy() {
         Log.d(TAG, "Service destroyed");
 
+        NotionBridgeProvisionerApplication.getRefWatcher(this).watch(this);
+
         CURRENT_STATE = CONNECTING;
         mServiceLooper = null;
         mServiceHandler = null;
