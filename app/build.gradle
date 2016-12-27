@@ -5,7 +5,6 @@ buildscript {
     }
     dependencies {
         classpath 'me.tatarka:gradle-retrolambda:3.3.1'
-        classpath 'com.facebook.testing.screenshot:plugin:0.4.2'
     }
 }
 
@@ -16,7 +15,6 @@ repositories {
 
 apply plugin: 'com.android.application'
 apply plugin: 'me.tatarka.retrolambda'
-apply plugin: 'com.facebook.testing.screenshot'
 
 android {
     compileSdkVersion 23
