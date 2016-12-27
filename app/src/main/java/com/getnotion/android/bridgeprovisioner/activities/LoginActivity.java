@@ -1,7 +1,8 @@
 package com.getnotion.android.bridgeprovisioner.activities;
 
-import android.support.v7.app.AppCompatActivity;
+import android.getnotion.android.bridgeprovisioner.R;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -10,4 +11,5 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
     }
+
 }
